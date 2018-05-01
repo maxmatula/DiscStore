@@ -47,11 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\DSDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Concentre\" />
-    <Folder Include="DAL\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DiscStore.Core\DiscStore.Core.csproj">
