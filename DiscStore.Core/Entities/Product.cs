@@ -25,7 +25,7 @@ namespace DiscStore.Core.Entities
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
         [ForeignKey("Category")]
-        public int CategoryID { get; set; }
+        public Guid CategoryID { get; set; }
         public virtual Category Category { get; set; }
     }
 }

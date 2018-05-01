@@ -20,8 +20,8 @@ namespace DiscStore.WebUI
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/css/bootstrap.min.css",
-                      "~/Content/css/site.css"));
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/site.css"));
         }
     }
 }
