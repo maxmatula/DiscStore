@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title — DiscStore</title>
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="home-layout">
+    <!--Navigation-->
+    <nav class="navbar navbar-fixed-top home-navbar" role="navigation">
+        <ul class="nav navbar-nav">
+            <li>Produkty</li>
+            <li>Kategorie</li>
+            <li>O nas</li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>Zaloguj się</li>
+            <li>Rejestracja</li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="col-xs-3">
+            Menu
+        </div>
+        <div class="col-xs-9">
+            @RenderBody()
+        </div>
+    </div>
+
+    <footer class="home-footer">
+        <div class="container">
+            <div class="row">
+                <p class="home-footer__copy">DiscStore &copy; @DateTime.Now.Year</p>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
