@@ -17,18 +17,35 @@
                 <li>Kategorie</li>
                 <li>O nas</li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="@Url.Action("Login","Account")">
-                        <i class="fas fa-sign-in-alt"></i> Zaloguj się
-                    </a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Register","Account")">
-                        <i class="fas fa-user"></i> Załóż konto
-                    </a>
-                </li>
-            </ul>
+            @if (User.Identity.IsAuthenticated == true)
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        Witaj, @User.Identity.Name
+                    </li>
+                    <li>
+                        <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fas fa-power-off "></i> Wyloguj</a>
+                    </li>
+                </ul>
+                using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {@Html.AntiForgeryToken()}
+            }
+            else
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="@Url.Action("Login","Account")">
+                            <i class="fas fa-sign-in-alt"></i> Zaloguj się
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Register","Account")">
+                            <i class="fas fa-user"></i> Załóż konto
+                        </a>
+                    </li>
+                </ul>
+            }
+
         </nav>
     </div>
 
