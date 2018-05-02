@@ -7,31 +7,95 @@ body {
     min-height: 400px;
     position: relative;
     height: 100vh;
-    color: #fff;
-    background-color: #41344e;
+    color: #000;
+    background-color: #fff;
 }
 .home-navbar {
-    background-color: #392f45;
+    background-color: #725178;
 }
 
+    .home-navbar .navbar-brand {
+        color: #fff;
+    }
     .home-navbar .navbar-nav li > a {
         color: #fff;
     }
 
         .home-navbar .navbar-nav li > a:hover, .home-navbar .navbar-nav li > a:focus {
-            color: #ef6b94;
+            color: #FC7A83;
         }
 
+.menu-left-homepage {
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-right: solid 1px #FC7A83;
+
+}
+
+.main-render-section{
+    padding: 10px;
+
+    }
+
 .home-footer {
-    background-color: #392f45;
+    background-color: #725178;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     padding-top: 15px;
     padding-bottom: 15px;
+    color: #fff;
 }
 
 .home-footer__copy {
     margin: 0;
 }
+
+.login {
+    color: #FC7A83;
+    background-color: #725178;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.login__content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+}
+
+.login__video {
+    width: 100%;
+    min-height: 100vh;
+    object-fit: cover;
+    opacity: 0.3;
+}
+
+
+.crud-index__navbar {
+    list-style-type: none;
+    padding: 0;
+}
+
+.btn-ds {
+    background-color: #fff;
+    color: #FC7A83;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+    .btn-ds:hover {
+        background-color: #FC7A83;
+        color: #fff;
+    }

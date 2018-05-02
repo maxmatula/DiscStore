@@ -10,53 +10,95 @@
 </head>
 <body class="home-layout">
     <!--Navigation-->
-    <div class="collapse navbar-collapse home-navbar__collapse">
-        <nav class="navbar navbar-fixed-top home-navbar" role="navigation">
-            <ul class="nav navbar-nav">
-                <li>Produkty</li>
-                <li>Kategorie</li>
-                <li>O nas</li>
-            </ul>
-            @if (User.Identity.IsAuthenticated == true)
-            {
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        Witaj, @User.Identity.Name
-                    </li>
-                    <li>
-                        <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fas fa-power-off "></i> Wyloguj</a>
-                    </li>
-                </ul>
-                using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" }))
-                {@Html.AntiForgeryToken()}
-            }
-            else
-            {
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="@Url.Action("Login","Account")">
-                            <i class="fas fa-sign-in-alt"></i> Zaloguj się
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Register","Account")">
-                            <i class="fas fa-user"></i> Załóż konto
-                        </a>
-                    </li>
-                </ul>
-            }
+    <nav class="navbar navbar-fixed-top home-navbar" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".home-navbar__collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("DiscStore", "Index", "Home", new { @class = "navbar-brand" })
+                </div>
+                <div class="collapse navbar-collapse home-navbar__collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            @Html.ActionLink("Kategorie", "Categories", "Home")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Bestsellery", "Bestsellers", "Home")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Promocje", "Team", "Home")
+                        </li>
+                    </ul>
+                    @if (User.Identity.IsAuthenticated == true)
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                Witaj, @User.Identity.Name
+                            </li>
+                            <li>
+                                <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fas fa-power-off "></i> Wyloguj</a>
+                            </li>
+                        </ul>
+                        using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                        {@Html.AntiForgeryToken()}
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="@Url.Action("Login","Account")">
+                                <i class="fas fa-sign-in-alt"></i> Zaloguj się
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Register","Account")">
+                                <i class="fas fa-user"></i> Załóż konto
+                            </a>
+                        </li>
+                    </ul>
+                }
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--Navigation End-->>
 
-        </nav>
-    </div>
+    <main>
+        <!--Slider-->
+        <div id="homepageslider" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#Carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#Carousel" data-slide-to="1"></li>
+                <li data-target="#Carousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="~/Content/Images/sl1.png" alt="">
+                </div>
+                <div class="item">
+                    <img src="~/Content/Images/sl2.png" alt="">
+                </div>
+                <div class="item">
+                    <img src="~/Content/Images/sl3.png" alt="">
+                </div>
+            </div>
+        </div>
 
-    <div class="container">
-        <div class="col-xs-3">
+
+        <div class="col-xs-3 menu-left-homepage">
             Menu
         </div>
-        <div class="col-xs-9">
+        <div class="col-xs-9 main-render-section">
             @RenderBody()
         </div>
-    </div>
+
+    </main>
 
     <footer class="home-footer">
         <div class="container">
