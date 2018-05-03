@@ -22,6 +22,10 @@ namespace DiscStore.Core.Entities
         [StringLength(200, ErrorMessage = "Opis produktu nie może być dłuższy niż 200 znaków")]
         public string Descirption { get; set; }
         [Required]
+        [DataType(DataType.Text)]
+        [StringLength(50, ErrorMessage = "Nazwa Artysty nie może być dłuższa niż 50 znaków")]
+        public string Artist { get; set; }
+        [Required]
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
         [Required]
