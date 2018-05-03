@@ -34,11 +34,14 @@
                         <li>
                             @Html.ActionLink("Promocje", "Team", "Home")
                         </li>
+                        <li>
+                            @Html.ActionLink("Nowości", "Team", "Home")
+                        </li>
                     </ul>
                     @if (User.Identity.IsAuthenticated == true)
                     {
                         <ul class="nav navbar-nav navbar-right">
-                            <li>
+                            <li class="navbar-text welcome-text-ds">
                                 Witaj, @User.Identity.Name
                             </li>
                             <li>
@@ -89,7 +92,7 @@
                 </div>
             </div>
         </div>
-
+        <!--Slider end-->
 
         <div class="col-xs-3 menu-left-homepage">
             Menu

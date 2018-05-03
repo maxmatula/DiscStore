@@ -24,6 +24,10 @@ namespace DiscStore.Core.Entities
         [Required]
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime? PremiereDate { get; set; }
         [ForeignKey("Category")]
         public Guid CategoryID { get; set; }
         public virtual Category Category { get; set; }

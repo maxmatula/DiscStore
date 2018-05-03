@@ -11,7 +11,7 @@ body {
     background-color: #fff;
 }
 .home-navbar {
-    background-color: #725178;
+    background-color: #F99FA5;
 }
 
     .home-navbar .navbar-brand {
@@ -29,8 +29,7 @@ body {
     padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
-    border-right: solid 1px #FC7A83;
-
+    border-right: solid 1px #F99FA5;
 }
 
 .main-render-section{
@@ -39,7 +38,7 @@ body {
     }
 
 .home-footer {
-    background-color: #725178;
+    background-color: #F99FA5;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -54,8 +53,8 @@ body {
 }
 
 .login {
-    color: #FC7A83;
-    background-color: #725178;
+    color: #F99FA5;
+    background-color: #4a2f2f;
     position: relative;
     width: 100%;
     height: 100vh;
@@ -99,3 +98,32 @@ body {
         background-color: #FC7A83;
         color: #fff;
     }
+
+
+.form .checkbox input {
+    display: none;
+}
+
+.form .checkbox label {
+    padding-left: 25px;
+}
+
+    .form .checkbox label:before {
+        content: "";
+        font-family: "Font Awesome 5 Free";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        z-index: 0;
+        font-size: 20px;
+    }
+
+.form .checkbox input:checked ~ label:before {
+    content: '\f14a';
+}
+
+.welcome-text-ds {
+    color:#fff;
+    font-weight: 700;
+}
