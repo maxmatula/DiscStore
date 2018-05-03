@@ -104,6 +104,10 @@
     <Compile Include="Migrations\201805031259599_PictureForProduct.Designer.cs">
       <DependentUpon>201805031259599_PictureForProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805031812556_ProductModelUpdateAuthor.cs" />
+    <Compile Include="Migrations\201805031812556_ProductModelUpdateAuthor.Designer.cs">
+      <DependentUpon>201805031812556_ProductModelUpdateAuthor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Abstract\IProductService.cs" />
@@ -141,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805031259599_PictureForProduct.resx">
       <DependentUpon>201805031259599_PictureForProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805031812556_ProductModelUpdateAuthor.resx">
+      <DependentUpon>201805031812556_ProductModelUpdateAuthor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
