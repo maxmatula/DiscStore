@@ -6,23 +6,41 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 using DiscStore.Core.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
 
 namespace DiscStore.WebUI
 {
-    public class IdentityConfig
+    public class DSUserStore : UserStore<AppUser>
     {
-        public void Configuration(IAppBuilder app)
+        public DSUserStore(DSDbContext context) : base(context)
         {
-            app.CreatePerOwinContext(() => new DSDbContext());
-            app.CreatePerOwinContext<DSUserManager>(DSUserManager.Create);
-            app.CreatePerOwinContext<RoleManager<AppRole>>((options, context) =>
-                new RoleManager<AppRole>(new RoleStore<AppRole>(context.Get<DSDbContext>())));
+        }
+    }
+    public class DSUserManager : UserManager<AppUser>
+    {
+        public DSUserManager(IUserStore<AppUser> store)
+            : base(store)
+        {
+        }
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Home/Login"),
-            });
+        public static DSUserManager Create(IdentityFactoryOptions<DSUserManager> options, IOwinContext context)
+        {
+            var store = new UserStore<AppUser>(context.Get<DSDbContext>());
+            var manager = new DSUserManager(store);
+            return manager;
+        }
+    }
+
+    public class DSSignInManager : SignInManager<AppUser, string>
+    {
+        public DSSignInManager(DSUserManager userManager, IAuthenticationManager authenticationManager)
+            : base(userManager, authenticationManager)
+        {
+        }
+
+        public static DSSignInManager Create(IdentityFactoryOptions<DSSignInManager> options, IOwinContext context)
+        {
+            return new DSSignInManager(context.GetUserManager<DSUserManager>(), context.Authentication);
         }
     }
 }
