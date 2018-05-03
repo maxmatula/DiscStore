@@ -39,6 +39,9 @@ namespace DiscStore.WebUI.Controllers
                         DefaultAuthenticationTypes.ApplicationCookie);
                     authManager.SignIn(
                         new AuthenticationProperties { IsPersistent = false }, ident);
+                    var currentUser = userManager.FindByEmail(login.Email);
+                    Session["Name"] = currentUser.Name;
+                    Session["Surname"] = currentUser.Surname;
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -105,12 +108,5 @@ namespace DiscStore.WebUI.Controllers
             }
         }
 
-        private void InitCurrentUserSession(LoginViewModel user)
-        {
-            var userManager = HttpContext.GetOwinContext().GetUserManager<DSUserManager>();
-            AppUser currentUser = userManager.FindByEmail(user.Email);
-            Session["Name"] = currentUser.Name;
-            Session["Surname"] = currentUser.Surname;
-        }
     }
 }

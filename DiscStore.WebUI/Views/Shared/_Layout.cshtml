@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title — DiscStore</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&amp;subset=latin-ext" rel="stylesheet">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -42,7 +43,7 @@
                     {
                         <ul class="nav navbar-nav navbar-right">
                             <li class="navbar-text welcome-text-ds">
-                                Witaj, @User.Identity.Name
+                                <span class="text-thin">Zalogowano jako:</span> @Session["Name"] @Session["Surname"]
                             </li>
                             <li>
                                 <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fas fa-power-off "></i> Wyloguj</a>
