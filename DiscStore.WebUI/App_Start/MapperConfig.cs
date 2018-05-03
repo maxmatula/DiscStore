@@ -14,7 +14,8 @@ namespace DiscStore.WebUI
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<Product, ProductViewModel>();
+                cfg.CreateMap<Product, ProductViewModel>()
+                .ForMember(f => f.categories, x => x.Ignore());
             });
         }
     }

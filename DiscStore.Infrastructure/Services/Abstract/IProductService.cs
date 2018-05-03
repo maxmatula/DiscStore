@@ -11,9 +11,10 @@ namespace DiscStore.Infrastructure.Services.Abstract
 {
     public interface IProductService
     {
-        bool Create(Product product, HttpPostedFileBase file);
+        bool Create(ProductViewModel product, HttpPostedFileBase file);
         bool Delete(Guid productId);
         bool Edit(Product product, HttpPostedFileBase file);
+        ProductViewModel GetCreateModel();
         ProductViewModel GetById(Guid productId);
         List<ProductViewModel> GetList();
 

@@ -8,23 +8,32 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace DiscStore.Infrastructure.Services.Concentre
 {
     public class ProductService : IProductService
     {
         private DSDbContext db = new DSDbContext();
-        public bool Create(Product product, HttpPostedFileBase file)
+        public bool Create(ProductViewModel product, HttpPostedFileBase file)
         {
             try
             {
+                Product prod = new Product();
+                prod.Artist = product.Artist;
+                prod.CategoryID = product.CategoryID;
+                prod.Descirption = product.Descirption;
+                prod.Name = product.Name;
+                prod.PremiereDate = product.PremiereDate;
+                prod.Price = product.Price;
                 if (file != null)
                 {
-                    product.PictureMimeType = file.ContentType;
-                    product.PictureData = new byte[file.ContentLength];
-                    file.InputStream.Read(product.PictureData, 0, file.ContentLength);
+                    prod.PictureMimeType = file.ContentType;
+                    prod.PictureData = new byte[file.ContentLength];
+                    file.InputStream.Read(prod.PictureData, 0, file.ContentLength);
                 }
-                db.Products.Add(product);
+                
+                db.Products.Add(prod);
                 db.SaveChanges();
                 return true;
             }
@@ -84,6 +93,17 @@ namespace DiscStore.Infrastructure.Services.Concentre
             {
                 throw new Exception("Nie można znaleźć produktu!");
             }
+        }
+
+        public ProductViewModel GetCreateModel()
+        {
+            var model = new ProductViewModel();
+            model.categories = db.Categories.Select(x => new SelectListItem
+            {
+                Value = x.CategoryID.ToString(),
+                Text = x.Name
+            });
+            return model;
         }
 
         public List<ProductViewModel> GetList()

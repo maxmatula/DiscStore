@@ -131,3 +131,8 @@ body {
 .text-thin{
     font-weight:200;
 }
+
+#upload-file{
+    width: 500px;
+    height: 500px;
+}

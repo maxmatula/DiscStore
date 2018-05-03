@@ -1,4 +1,5 @@
 ﻿using DiscStore.Core.Entities;
+using DiscStore.Infrastructure.DAL;
 using DiscStore.Infrastructure.Services.Abstract;
 using DiscStore.Infrastructure.Services.Concentre;
 using DiscStore.Infrastructure.ViewModels.Product;
@@ -30,10 +31,13 @@ namespace DiscStore.WebUI.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var product = productService.GetCreateModel();
+            return View(product);
         }
 
-        public ActionResult Create(Product product, HttpPostedFileBase file)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ProductViewModel product, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -41,5 +45,6 @@ namespace DiscStore.WebUI.Controllers
             }
             return View(product);
         }
+
     }
 }
