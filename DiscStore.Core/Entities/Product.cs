@@ -15,7 +15,7 @@ namespace DiscStore.Core.Entities
         public Guid ProductID { get; set; }
         [Required]
         [DataType(DataType.Text)]
-        [StringLength(30, ErrorMessage = "Nazwa produktu nie może być dłuższa niż 30 znaków")]
+        [StringLength(50, ErrorMessage = "Nazwa produktu nie może być dłuższa niż 50 znaków")]
         public string Name { get; set; }
         [Required]
         [DataType(DataType.Text)]
@@ -28,6 +28,9 @@ namespace DiscStore.Core.Entities
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? PremiereDate { get; set; }
+        public byte[] PictureData { get; set; }
+        [StringLength(50)]
+        public string PictureMimeType { get; set; }
         [ForeignKey("Category")]
         public Guid CategoryID { get; set; }
         public virtual Category Category { get; set; }

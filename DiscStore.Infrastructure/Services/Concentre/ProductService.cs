@@ -1,0 +1,103 @@
+﻿using AutoMapper;
+using DiscStore.Core.Entities;
+using DiscStore.Infrastructure.DAL;
+using DiscStore.Infrastructure.Services.Abstract;
+using DiscStore.Infrastructure.ViewModels.Product;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+
+namespace DiscStore.Infrastructure.Services.Concentre
+{
+    public class ProductService : IProductService
+    {
+        private DSDbContext db = new DSDbContext();
+        public bool Create(Product product, HttpPostedFileBase file)
+        {
+            try
+            {
+                if (file != null)
+                {
+                    product.PictureMimeType = file.ContentType;
+                    product.PictureData = new byte[file.ContentLength];
+                    file.InputStream.Read(product.PictureData, 0, file.ContentLength);
+                }
+                db.Products.Add(product);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+                throw new Exception("Product Create failed!");
+            }
+        }
+
+        public bool Delete(Guid productId)
+        {
+            try
+            {
+                var product = db.Products.Find(productId);
+                db.Products.Remove(product);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+                throw new Exception("Prodyct Delete failed!");
+            }
+        }
+
+        public bool Edit(Product product, HttpPostedFileBase file)
+        {
+            try
+            {
+                if (file != null)
+                {
+                    product.PictureMimeType = file.ContentType;
+                    product.PictureData = new byte[file.ContentLength];
+                    file.InputStream.Read(product.PictureData, 0, file.ContentLength);
+                }
+                db.Entry(product).State = EntityState.Modified;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+                throw new Exception("Product Edit failed!");
+            }
+        }
+
+        public ProductViewModel GetById(Guid productId)
+        {
+            try
+            {
+                var product = db.Products.Find(productId);
+                var model = Mapper.Map<ProductViewModel>(product);
+                return model;
+            }
+            catch
+            {
+                throw new Exception("Nie można znaleźć produktu!");
+            }
+        }
+
+        public List<ProductViewModel> GetList()
+        {
+            try
+            {
+                var products = db.Products.ToList();
+                var model = Mapper.Map<List<ProductViewModel>>(products);           
+                return model;
+            }
+            catch
+            {
+                throw new Exception("Nie można znaleźć produktów!");
+            }
+        }
+    }
+}

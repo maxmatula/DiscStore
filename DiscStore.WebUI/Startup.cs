@@ -20,6 +20,7 @@ namespace DiscStore.WebUI
         {
             ConfigureAuth(app);
             CreateRoles();
+            MapperInitialize();
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {

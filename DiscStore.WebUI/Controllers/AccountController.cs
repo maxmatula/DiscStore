@@ -4,9 +4,8 @@ using Microsoft.AspNet.Identity.Owin;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Owin.Security;
-using DiscStore.Infrastructure.DAL;
-using DiscStore.WebUI.ViewModels.Account;
 using System.Threading.Tasks;
+using DiscStore.WebUI.ViewModels.Account;
 
 namespace DiscStore.WebUI.Controllers
 {
