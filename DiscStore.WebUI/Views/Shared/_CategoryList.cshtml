@@ -1,0 +1,29 @@
+﻿@model List<DiscStore.Infrastructure.ViewModels.Category.CategoryViewModel>
+
+@if (Model == null)
+{
+    <p>Brak kategorii</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Opis</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cat in Model)
+            {
+                <tr>
+                <td>@cat.Name</td>
+                <td>@cat.Description</td>
+                </tr>
+
+            }
+        </tbody>
+
+    </table>
+
+}
