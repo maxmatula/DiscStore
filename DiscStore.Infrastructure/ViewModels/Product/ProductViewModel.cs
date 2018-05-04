@@ -32,11 +32,11 @@ namespace DiscStore.Infrastructure.ViewModels.Product
         [Display(Name = "Data wydania")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime? PremiereDate { get; set; }
+        public DateTime PremiereDate { get; set; }
         public byte[] PictureData { get; set; }
         public string PictureMimeType { get; set; }
         [Display(Name = "Kategoria")]
-        public string selectedCategoryID { get; set; }
+        public Guid selectedCategoryID { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }
 
     }

@@ -137,6 +137,14 @@
     <Compile Include="Migrations\201805041526328_ModelUpdateForDescription2.Designer.cs">
       <DependentUpon>201805041526328_ModelUpdateForDescription2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805041548278_ModelUpdateForDescription3.cs" />
+    <Compile Include="Migrations\201805041548278_ModelUpdateForDescription3.Designer.cs">
+      <DependentUpon>201805041548278_ModelUpdateForDescription3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805041602076_ModelUpdateForDescription4.cs" />
+    <Compile Include="Migrations\201805041602076_ModelUpdateForDescription4.Designer.cs">
+      <DependentUpon>201805041602076_ModelUpdateForDescription4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Abstract\ICategoryService.cs" />
@@ -186,6 +194,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805041526328_ModelUpdateForDescription2.resx">
       <DependentUpon>201805041526328_ModelUpdateForDescription2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805041548278_ModelUpdateForDescription3.resx">
+      <DependentUpon>201805041548278_ModelUpdateForDescription3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805041602076_ModelUpdateForDescription4.resx">
+      <DependentUpon>201805041602076_ModelUpdateForDescription4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

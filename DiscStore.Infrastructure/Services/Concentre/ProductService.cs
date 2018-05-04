@@ -23,8 +23,8 @@ namespace DiscStore.Infrastructure.Services.Concentre
                 Product prod = new Product();
                 prod.ProductID = product.ProductID;
                 prod.Artist = product.Artist;
-                prod.CategoryID = Guid.Parse(product.selectedCategoryID.ToString());
-                prod.Descirption = product.Description;
+                prod.CategoryID = product.selectedCategoryID;
+                prod.Description = product.Description;
                 prod.Name = product.Name;
                 prod.PremiereDate = product.PremiereDate;
                 prod.Price = product.Price;
@@ -66,14 +66,14 @@ namespace DiscStore.Infrastructure.Services.Concentre
         {
             try
             {
-                Product prod = new Product();
-                prod.ProductID = product.ProductID;
+                Product prod = db.Products.Find(product.ProductID);
                 prod.Artist = product.Artist;
-                prod.CategoryID = Guid.Parse(product.selectedCategoryID.ToString());
-                prod.Descirption = product.Description;
+                prod.CategoryID = product.selectedCategoryID;
+                prod.Description = product.Description;
                 prod.Name = product.Name;
                 prod.PremiereDate = product.PremiereDate;
                 prod.Price = product.Price;
+
                 if (file != null)
                 {
                     prod.PictureMimeType = file.ContentType;
@@ -97,6 +97,14 @@ namespace DiscStore.Infrastructure.Services.Concentre
             {
                 var product = db.Products.Find(productId);
                 var model = Mapper.Map<ProductViewModel>(product);
+                var categories = db.Categories.Select(f => new SelectListItem
+                {
+                    Value = f.CategoryID.ToString(),
+                    Text = f.Name
+                });
+                model.Categories = categories;
+                model.selectedCategoryID = product.CategoryID;
+                model.PremiereDate = product.PremiereDate;
                 return model;
             }
             catch
@@ -108,7 +116,8 @@ namespace DiscStore.Infrastructure.Services.Concentre
         public ProductViewModel GetCreateModel()
         {
             var model = new ProductViewModel();
-            var categories = db.Categories.Select(f => new SelectListItem {
+            var categories = db.Categories.Select(f => new SelectListItem
+            {
                 Value = f.CategoryID.ToString(),
                 Text = f.Name
             });

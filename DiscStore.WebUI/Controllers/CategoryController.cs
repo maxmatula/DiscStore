@@ -61,7 +61,7 @@ namespace DiscStore.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Name,Description")] CategoryViewModel category)
+        public ActionResult Edit([Bind(Include = "CategoryID,Name,Description")] CategoryViewModel category)
         {
             if (ModelState.IsValid)
             {

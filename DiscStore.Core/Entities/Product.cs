@@ -15,7 +15,7 @@ namespace DiscStore.Core.Entities
         [Required]
         [DataType(DataType.MultilineText)]
         [StringLength(500, ErrorMessage = "Opis produktu nie może być dłuższy niż 500 znaków")]
-        public string Descirption { get; set; }
+        public string Description { get; set; }
         [Required]
         [DataType(DataType.Text)]
         [StringLength(50, ErrorMessage = "Nazwa Artysty nie może być dłuższa niż 50 znaków")]
@@ -26,7 +26,7 @@ namespace DiscStore.Core.Entities
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime? PremiereDate { get; set; }
+        public DateTime PremiereDate { get; set; }
         public byte[] PictureData { get; set; }
         [StringLength(50)]
         public string PictureMimeType { get; set; }

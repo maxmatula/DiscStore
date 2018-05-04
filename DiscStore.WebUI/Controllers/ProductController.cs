@@ -51,7 +51,7 @@ namespace DiscStore.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,Description,Artist,Price,PremiereDate,selectedCategoryID,Categories")] ProductViewModel product, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Name,Description,Artist,Price,PremiereDate,selectedCategoryID,Categories,PictureData,PictureMimeType")] ProductViewModel product, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +73,7 @@ namespace DiscStore.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Name,Description,Artist,Price,PremiereDate,selectedCategoryID,Categories")] ProductViewModel product, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "ProductID,Name,Description,Artist,Price,PremiereDate,selectedCategoryID,Categories")] ProductViewModel product, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -83,6 +83,7 @@ namespace DiscStore.WebUI.Controllers
                     return RedirectToAction("Index", "Admin");
                 }
             }
+            product = productService.GetCreateModel();
             return View(product);
         }
 

@@ -55,8 +55,7 @@ namespace DiscStore.Infrastructure.Services.Concentre
         {
             try
             {
-                Category cat = new Category();
-                cat.CategoryID = category.CategoryID;
+                Category cat = db.Categories.Find(category.CategoryID);
                 cat.Name = category.Name;
                 cat.Description = category.Description;
                 db.Entry(cat).State = EntityState.Modified;
