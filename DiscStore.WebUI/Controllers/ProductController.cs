@@ -6,6 +6,7 @@ using DiscStore.Infrastructure.ViewModels.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -22,10 +23,25 @@ namespace DiscStore.WebUI.Controllers
         }
         // GET: Product
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult ProductList()
         {
             var model = productService.GetList();
             return View(model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Details(Guid? productId)
+        {
+            if (productId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var product = productService.GetById(productId.Value);
+            if(product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
         }
 
 
@@ -44,6 +60,20 @@ namespace DiscStore.WebUI.Controllers
                 var result = productService.Create(product, file);
             }
             return View(product);
+        }
+
+        [AllowAnonymous]
+        public ActionResult GetPicture(Guid productId)
+        {
+            var product = productService.GetById(productId);
+            if (product != null && product.PictureData != null)
+            {
+                return File(product.PictureData, product.PictureMimeType);
+            }
+            else
+            {
+                return null;
+            }
         }
 
     }

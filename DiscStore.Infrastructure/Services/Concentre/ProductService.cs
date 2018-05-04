@@ -111,7 +111,11 @@ namespace DiscStore.Infrastructure.Services.Concentre
             try
             {
                 var products = db.Products.ToList();
-                var model = Mapper.Map<List<ProductViewModel>>(products);           
+                var model = Mapper.Map<List<ProductViewModel>>(products);
+                if (products.Count.Equals(0) || products == null)
+                {
+                    model = new List<ProductViewModel>();
+                }
                 return model;
             }
             catch

@@ -131,6 +131,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Abstract\ICategoryService.cs" />
     <Compile Include="Services\Abstract\IProductService.cs" />
     <Compile Include="Services\Concentre\ProductService.cs" />
     <Compile Include="ViewModels\Product\ProductViewModel.cs" />

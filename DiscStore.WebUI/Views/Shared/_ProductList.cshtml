@@ -1,0 +1,37 @@
+﻿@model List<DiscStore.Infrastructure.ViewModels.Product.ProductViewModel>
+
+
+@if (Model == null)
+{
+    <p>Brak produktów</p>
+}
+else
+{
+
+    foreach (var p in Model)
+    {
+        <div class="col-xs-3">
+            <a href="@Url.Action("Details", "Product", new { productId = p.ProductID})">
+                <div class="picture-ds">
+                    @if (p.PictureData == null || p.PictureData.Length == 0)
+                    {
+                        <span class="form-control-static">Brak zdjęcia</span>
+                    }
+                    else
+                    {
+                        <img class="image-thumbnail" width="200" height="200"
+                             src="@Url.Action("GetPicture", "Product", new { productId = p.ProductID })" />
+                    }
+                </div>
+                <div class="description-ps">
+                    <h3>@p.Name</h3>
+                    @p.Descirption
+                    <h4>@p.Artist</h4>
+                    <h5>@p.PremiereDate</h5>
+                    <h3>@p.Price</h3>
+                </div>
+            </a>
+        </div>
+    }
+
+}
