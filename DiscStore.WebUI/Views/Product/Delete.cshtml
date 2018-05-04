@@ -1,14 +1,15 @@
 ﻿@model DiscStore.Infrastructure.ViewModels.Product.ProductViewModel
 
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_FluidLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Usuń</h2>
 
+<h3>Czy na pewno chcesz usunąć ten produkt?</h3>
 <div>
-    <h4>ProductViewModel</h4>
+    <h4>Produkt</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -50,9 +51,11 @@
         <dd>
             @Html.DisplayFor(model => model.PremiereDate)
         </dd>
+
         <dt>
-            Okładka:
+            Zdjęcie
         </dt>
+
         <dd>
             @if (Model.PictureData == null || Model.PictureData.Length == 0)
             {
@@ -64,13 +67,17 @@
                      src="@Url.Action("GetPicture", "Product", new { productId = Model.ProductID })" />
             }
         </dd>
+
+
     </dl>
-</div>
-<p>
-    @if (User.IsInRole("Admin"))
+
+    @using (Html.BeginForm())
     {
-        @Html.ActionLink("Edit", "Edit", new { productId = Model.ProductID })
-        @Html.ActionLink("Delete", "Delete", new { productId = Model.ProductID })
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
     }
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</div>

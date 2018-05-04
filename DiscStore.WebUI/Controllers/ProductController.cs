@@ -45,6 +45,7 @@ namespace DiscStore.WebUI.Controllers
         }
 
 
+
         public ActionResult Create()
         {
             var product = productService.GetCreateModel();
@@ -58,6 +59,23 @@ namespace DiscStore.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 var result = productService.Create(product, file);
+            }
+            return View(product);
+        }
+
+        public ActionResult Edit(Guid productId)
+        {
+            var product = productService.GetById(productId);
+            return View(product);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(ProductViewModel product, HttpPostedFileBase file)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = productService.Edit(product, file);
             }
             return View(product);
         }
@@ -76,5 +94,26 @@ namespace DiscStore.WebUI.Controllers
             }
         }
 
+        public ActionResult Delete(Guid? productId)
+        {
+            if (productId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var product = productService.GetById(productId.Value);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(Guid productId)
+        {
+            var result = productService.Delete(productId);
+            return RedirectToAction("Index");
+        }
     }
 }

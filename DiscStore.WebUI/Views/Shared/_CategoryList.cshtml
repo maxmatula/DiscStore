@@ -17,8 +17,14 @@ else
             @foreach (var cat in Model)
             {
                 <tr>
-                <td>@cat.Name</td>
-                <td>@cat.Description</td>
+
+                    <td>
+                        <a href="@Url.Action("Details", "Category", new { categoryId = cat.CategoryID})">
+                            @cat.Name
+                        </a>
+                    </td>
+                    <td>@cat.Description</td>
+
                 </tr>
 
             }

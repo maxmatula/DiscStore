@@ -13,7 +13,7 @@ namespace DiscStore.Infrastructure.Services.Abstract
     {
         bool Create(ProductViewModel product, HttpPostedFileBase file);
         bool Delete(Guid productId);
-        bool Edit(Product product, HttpPostedFileBase file);
+        bool Edit(ProductViewModel product, HttpPostedFileBase file);
         ProductViewModel GetCreateModel();
         ProductViewModel GetById(Guid productId);
         List<ProductViewModel> GetList();

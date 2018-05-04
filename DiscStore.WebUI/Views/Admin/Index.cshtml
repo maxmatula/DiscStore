@@ -1,17 +1,21 @@
 ﻿
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_FluidLayout.cshtml";
 }
+<div class="col-xs-9 col-xs-offset-3">
+    <h2>Panel Administracyjny - DiscStore</h2>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div> 
+    <div>
+        <h3>Kategorie</h3>
+        @Html.ActionLink("Dodaj kategorię", "Create", "Category")
+        @Html.Partial("_CategoryList")
     </div>
-</body>
-</html>
+    <div>
+        <h3>Produkty</h3>
+        @Html.ActionLink("Dodaj produkt", "Create", "Product")
+        @Html.Partial("_ProductList")
+    </div>
+</div>
+
+
