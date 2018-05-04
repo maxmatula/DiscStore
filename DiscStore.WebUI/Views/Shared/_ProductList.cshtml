@@ -1,7 +1,7 @@
 ﻿@model List<DiscStore.Infrastructure.ViewModels.Product.ProductViewModel>
 
 
-@if (Model == null)
+@if (Model == null || Model.Count.Equals(0))
 {
     <p>Brak produktów</p>
 }
@@ -25,7 +25,6 @@ else
                 </div>
                 <div class="description-ps">
                     <h3>@p.Name</h3>
-                    @p.Descirption
                     <h4>@p.Artist</h4>
                     <h5>@p.PremiereDate</h5>
                     <h3>@p.Price.ToString("c")</h3>

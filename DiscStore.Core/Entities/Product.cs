@@ -6,11 +6,6 @@ namespace DiscStore.Core.Entities
 {
     public class Product
     {
-        public Product()
-        {
-            this.ProductID = Guid.NewGuid();
-        }
-
         [Key]
         public Guid ProductID { get; set; }
         [Required]
@@ -18,8 +13,8 @@ namespace DiscStore.Core.Entities
         [StringLength(50, ErrorMessage = "Nazwa produktu nie może być dłuższa niż 50 znaków")]
         public string Name { get; set; }
         [Required]
-        [DataType(DataType.Text)]
-        [StringLength(200, ErrorMessage = "Opis produktu nie może być dłuższy niż 200 znaków")]
+        [DataType(DataType.MultilineText)]
+        [StringLength(500, ErrorMessage = "Opis produktu nie może być dłuższy niż 500 znaków")]
         public string Descirption { get; set; }
         [Required]
         [DataType(DataType.Text)]

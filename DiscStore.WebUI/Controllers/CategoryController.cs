@@ -23,16 +23,10 @@ namespace DiscStore.WebUI.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            var model = categoryService.GetList();
+            return View(model);
         }
-
         [AllowAnonymous]
-        public ActionResult CategoryList()
-        {
-            var model = categoryService.GetCategoryList();
-            return View();
-        }
-
         public ActionResult Details(Guid categoryId)
         {
             var category = categoryService.GetById(categoryId);
@@ -46,11 +40,15 @@ namespace DiscStore.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CategoryViewModel category)
+        public ActionResult Create([Bind(Include = "Name,Description")] CategoryViewModel category)
         {
             if (ModelState.IsValid)
             {
                 var result = categoryService.Create(category);
+                if (result == true)
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
             }
             return View(category);
         }
@@ -63,11 +61,15 @@ namespace DiscStore.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CategoryViewModel category)
+        public ActionResult Edit([Bind(Include = "Name,Description")] CategoryViewModel category)
         {
             if (ModelState.IsValid)
             {
                 var result = categoryService.Edit(category);
+                if (result == true)
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
             }
             return View(category);
         }
@@ -91,7 +93,7 @@ namespace DiscStore.WebUI.Controllers
         public ActionResult DeleteConfirmed(Guid categoryId)
         {
             var result = categoryService.Delete(categoryId);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Admin");
         }
 
     }

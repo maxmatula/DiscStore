@@ -9,12 +9,14 @@
     <div>
         <h3>Kategorie</h3>
         @Html.ActionLink("Dodaj kategorię", "Create", "Category")
-        @Html.Partial("_CategoryList")
+        @Html.Action("Category", "Admin")
+
     </div>
+
     <div>
         <h3>Produkty</h3>
         @Html.ActionLink("Dodaj produkt", "Create", "Product")
-        @Html.Partial("_ProductList")
+        @Html.Action("Product", "Admin")
     </div>
 </div>
 

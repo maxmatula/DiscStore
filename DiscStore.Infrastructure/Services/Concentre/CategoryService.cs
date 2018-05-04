@@ -19,6 +19,7 @@ namespace DiscStore.Infrastructure.Services.Concentre
         {
             try
             {
+                category.CategoryID = Guid.NewGuid();
                 Category cat = new Category();
                 cat.CategoryID = category.CategoryID;
                 cat.Name = category.Name;
@@ -76,14 +77,10 @@ namespace DiscStore.Infrastructure.Services.Concentre
             return model;
         }
 
-        public List<CategoryViewModel> GetCategoryList()
+        public List<CategoryViewModel> GetList()
         {
             var categories = db.Categories.ToList();
             var model = Mapper.Map<List<CategoryViewModel>>(categories);
-            if (categories == null)
-            {
-                model = new List<CategoryViewModel>();
-            }
             return model;
         }
     }

@@ -13,6 +13,6 @@ namespace DiscStore.Infrastructure.Services.Abstract
         bool Edit(CategoryViewModel category);
         bool Delete(Guid categoryId);
         CategoryViewModel GetById(Guid categoryId);
-        List<CategoryViewModel> GetCategoryList();
+        List<CategoryViewModel> GetList();
     }
 }

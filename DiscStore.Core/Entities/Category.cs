@@ -6,11 +6,6 @@ namespace DiscStore.Core.Entities
 {
     public class Category
     {
-        public Category()
-        {
-            this.CategoryID = Guid.NewGuid();
-        }
-
         [Key]
         public Guid CategoryID { get; set; }
         [Required]

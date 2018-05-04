@@ -19,10 +19,12 @@ namespace DiscStore.Infrastructure.Services.Concentre
         {
             try
             {
+                product.ProductID = Guid.NewGuid();
                 Product prod = new Product();
+                prod.ProductID = product.ProductID;
                 prod.Artist = product.Artist;
-                prod.CategoryID = product.CategoryID;
-                prod.Descirption = product.Descirption;
+                prod.CategoryID = Guid.Parse(product.selectedCategoryID.ToString());
+                prod.Descirption = product.Description;
                 prod.Name = product.Name;
                 prod.PremiereDate = product.PremiereDate;
                 prod.Price = product.Price;
@@ -32,7 +34,7 @@ namespace DiscStore.Infrastructure.Services.Concentre
                     prod.PictureData = new byte[file.ContentLength];
                     file.InputStream.Read(prod.PictureData, 0, file.ContentLength);
                 }
-                
+
                 db.Products.Add(prod);
                 db.SaveChanges();
                 return true;
@@ -67,8 +69,8 @@ namespace DiscStore.Infrastructure.Services.Concentre
                 Product prod = new Product();
                 prod.ProductID = product.ProductID;
                 prod.Artist = product.Artist;
-                prod.CategoryID = product.CategoryID;
-                prod.Descirption = product.Descirption;
+                prod.CategoryID = Guid.Parse(product.selectedCategoryID.ToString());
+                prod.Descirption = product.Description;
                 prod.Name = product.Name;
                 prod.PremiereDate = product.PremiereDate;
                 prod.Price = product.Price;
@@ -106,11 +108,11 @@ namespace DiscStore.Infrastructure.Services.Concentre
         public ProductViewModel GetCreateModel()
         {
             var model = new ProductViewModel();
-            model.categories = db.Categories.Select(x => new SelectListItem
-            {
-                Value = x.CategoryID.ToString(),
-                Text = x.Name
+            var categories = db.Categories.Select(f => new SelectListItem {
+                Value = f.CategoryID.ToString(),
+                Text = f.Name
             });
+            model.Categories = categories;
             return model;
         }
 
@@ -120,10 +122,6 @@ namespace DiscStore.Infrastructure.Services.Concentre
             {
                 var products = db.Products.ToList();
                 var model = Mapper.Map<List<ProductViewModel>>(products);
-                if (products == null)
-                {
-                    model = new List<ProductViewModel>();
-                }
                 return model;
             }
             catch

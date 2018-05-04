@@ -1,4 +1,6 @@
-﻿using Ninject;
+﻿using DiscStore.Infrastructure.Services.Abstract;
+using DiscStore.Infrastructure.Services.Concentre;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +29,8 @@ namespace DiscStore.WebUI.Infrastructure
         }
         private void AddBindings()
         {
-
+            kernel.Bind<IProductService>().To<ProductService>();
+            kernel.Bind<ICategoryService>().To<CategoryService>();
         }
     }
 }
