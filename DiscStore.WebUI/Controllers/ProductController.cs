@@ -22,9 +22,17 @@ namespace DiscStore.WebUI.Controllers
             this.productService = new ProductService();
         }
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var model = productService.GetList();
+            return View(model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Newest()
+        {
+            var model = productService.GetNewProductList();
             return View(model);
         }
 

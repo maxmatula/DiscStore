@@ -17,6 +17,7 @@ namespace DiscStore.Infrastructure.Services.Abstract
         ProductViewModel GetCreateModel();
         ProductViewModel GetById(Guid productId);
         List<ProductViewModel> GetList();
+        List<ProductViewModel> GetNewProductList();
 
     }
 }

@@ -138,5 +138,20 @@ namespace DiscStore.Infrastructure.Services.Concentre
                 throw new Exception("Nie można znaleźć produktów!");
             }
         }
+
+        public List<ProductViewModel> GetNewProductList()
+        {
+            try
+            {
+                var products = db.Products.ToList();
+                products = products.Where(x => x.PremiereDate.Date.AddDays(30) > DateTime.Now.Date).ToList();
+                var model = Mapper.Map<List<ProductViewModel>>(products);
+                return model;
+            }
+            catch
+            {
+                throw new Exception("Nie można znaleźć produktów!");
+            }
+        }
     }
 }
