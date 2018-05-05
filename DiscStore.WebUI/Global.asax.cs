@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DiscStore.Core.Models;
+using DiscStore.WebUI.Infrastructure.Binders;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,7 +18,7 @@ namespace DiscStore.WebUI
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
         }
     }
 }

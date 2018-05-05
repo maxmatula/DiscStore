@@ -20,43 +20,36 @@ namespace DiscStore.WebUI.Controllers
             this.productService = new ProductService();
         }
 
-        public ActionResult Index(string returnUrl)
+        public ActionResult Index(Cart cart, string returnUrl)
         {
-            return View(new CartIndexViewModel { Cart = GetCart(), ReturnUrl = returnUrl });
+            return View(new CartIndexViewModel { Cart = cart, ReturnUrl = returnUrl });
         }
 
-        public ActionResult AddToCart(Guid productId, string returnUrl)
+        public ActionResult AddToCart(Cart cart, Guid productId, string returnUrl)
         {
             var product = productService.GetProductById(productId);
 
             if (product != null)
             {
-                GetCart().AddItem(product, 1);
+                cart.AddItem(product, 1);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public ActionResult RemoveFromCart(Guid productId, string returnUrl)
+        public ActionResult RemoveFromCart(Cart cart, Guid productId, string returnUrl)
         {
             var product = productService.GetProductById(productId);
 
-            if(product != null)
+            if (product != null)
             {
-                GetCart().RemoveItem(product);
+                cart.RemoveItem(product);
             }
             return RedirectToAction("Index", new { returnUrl });
         }
 
-
-        private Cart GetCart()
+        public ActionResult Summary(Cart cart)
         {
-            Cart cart = (Cart)Session["Cart"];
-            if (cart == null)
-            {
-                cart = new Cart();
-                Session["Cart"] = cart;
-            }
-            return cart;
+            return PartialView(cart);
         }
     }
 }

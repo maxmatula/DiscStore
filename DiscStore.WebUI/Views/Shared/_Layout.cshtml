@@ -14,10 +14,8 @@
     <nav class="navbar navbar-fixed-top home-navbar" role="navigation">
         <div class="container">
             <div class="row">
-                <div class="navbar-header">
-                    @Html.ActionLink("DiscStore", "Index", "Home", new { @class = "navbar-brand" })
-                </div>
                 <div class="collapse navbar-collapse home-navbar__collapse">
+                    <a class="navbar-brand" href="#">DiscStore</a>
                     <ul class="nav navbar-nav">
                         <li class="active">
                             @Html.ActionLink("Kategorie", "Index", "Category")
@@ -26,10 +24,12 @@
                             @Html.ActionLink("Wszystkie płyty", "Index", "Home")
                         </li>
                         <li>
-                            @Html.ActionLink("Promocje", "Team", "Home")
-                        </li>
-                        <li>
                             @Html.ActionLink("Nowości", "Newest", "Product")
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            @Html.Action("Summary", "Cart")
                         </li>
                     </ul>
                     @if (User.Identity.IsAuthenticated == true)
@@ -51,11 +51,6 @@
                         <li>
                             <a href="@Url.Action("Login","Account")">
                                 <i class="fas fa-sign-in-alt"></i> Zaloguj się
-                            </a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Register","Account")">
-                                <i class="fas fa-user"></i> Załóż konto
                             </a>
                         </li>
                     </ul>
