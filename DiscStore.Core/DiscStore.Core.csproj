@@ -78,6 +78,8 @@
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Identity\AppUser.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CartLine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

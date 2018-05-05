@@ -25,14 +25,14 @@ namespace DiscStore.WebUI.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            var model = productService.GetList();
+            var model = productService.GetProductVMList();
             return View(model);
         }
 
         [AllowAnonymous]
         public ActionResult Newest()
         {
-            var model = productService.GetNewProductList();
+            var model = productService.GetNewProductVMList();
             return View(model);
         }
 
@@ -43,7 +43,7 @@ namespace DiscStore.WebUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var product = productService.GetById(productId.Value);
+            var product = productService.GetProductVMById(productId.Value);
             if (product == null)
             {
                 return HttpNotFound();
@@ -75,7 +75,7 @@ namespace DiscStore.WebUI.Controllers
 
         public ActionResult Edit(Guid productId)
         {
-            var product = productService.GetById(productId);
+            var product = productService.GetProductVMById(productId);
             return View(product);
         }
 
@@ -98,7 +98,7 @@ namespace DiscStore.WebUI.Controllers
         [AllowAnonymous]
         public ActionResult GetPicture(Guid productId)
         {
-            var product = productService.GetById(productId);
+            var product = productService.GetProductVMById(productId);
             if (product != null && product.PictureData != null)
             {
                 return File(product.PictureData, product.PictureMimeType);
@@ -115,7 +115,7 @@ namespace DiscStore.WebUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var product = productService.GetById(productId.Value);
+            var product = productService.GetProductVMById(productId.Value);
             if (product == null)
             {
                 return HttpNotFound();

@@ -15,9 +15,10 @@ namespace DiscStore.Infrastructure.Services.Abstract
         bool Delete(Guid productId);
         bool Edit(ProductViewModel product, HttpPostedFileBase file);
         ProductViewModel GetCreateModel();
-        ProductViewModel GetById(Guid productId);
-        List<ProductViewModel> GetList();
-        List<ProductViewModel> GetNewProductList();
+        ProductViewModel GetProductVMById(Guid productId);
+        Product GetProductById(Guid productId);
+        List<ProductViewModel> GetProductVMList();
+        List<ProductViewModel> GetNewProductVMList();
 
     }
 }

@@ -30,6 +30,14 @@ else
                     <h3>@p.Price.ToString("c")</h3>
                 </div>
             </a>
+            <div class="addcart-button">
+                @using (Html.BeginForm("AddToCart", "Cart"))
+                {
+                    @Html.Hidden("productId", p.ProductID)
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <input type="submit" class="btn" value="Dodaj do koszyka" />
+                }
+            </div>
         </div>
     }
 

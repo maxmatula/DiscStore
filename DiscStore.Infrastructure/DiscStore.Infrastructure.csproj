@@ -151,6 +151,7 @@
     <Compile Include="Services\Abstract\IProductService.cs" />
     <Compile Include="Services\Concentre\CategoryService.cs" />
     <Compile Include="Services\Concentre\ProductService.cs" />
+    <Compile Include="ViewModels\Cart\CartIndexViewModel.cs" />
     <Compile Include="ViewModels\Category\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Product\ProductViewModel.cs" />
   </ItemGroup>

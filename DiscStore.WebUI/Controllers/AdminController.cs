@@ -28,7 +28,7 @@ namespace DiscStore.WebUI.Controllers
 
         public ActionResult Product()
         {
-            var model = productService.GetList();
+            var model = productService.GetProductVMList();
             return View(model);
         }
 

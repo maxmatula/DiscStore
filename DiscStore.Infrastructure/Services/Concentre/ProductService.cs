@@ -91,7 +91,7 @@ namespace DiscStore.Infrastructure.Services.Concentre
             }
         }
 
-        public ProductViewModel GetById(Guid productId)
+        public ProductViewModel GetProductVMById(Guid productId)
         {
             try
             {
@@ -125,7 +125,7 @@ namespace DiscStore.Infrastructure.Services.Concentre
             return model;
         }
 
-        public List<ProductViewModel> GetList()
+        public List<ProductViewModel> GetProductVMList()
         {
             try
             {
@@ -139,7 +139,7 @@ namespace DiscStore.Infrastructure.Services.Concentre
             }
         }
 
-        public List<ProductViewModel> GetNewProductList()
+        public List<ProductViewModel> GetNewProductVMList()
         {
             try
             {
@@ -151,6 +151,20 @@ namespace DiscStore.Infrastructure.Services.Concentre
             catch
             {
                 throw new Exception("Nie można znaleźć produktów!");
+            }
+        }
+
+        public Product GetProductById(Guid productId)
+        {
+            try
+            {
+                var product = db.Products.Find(productId);
+                return product;
+            }
+            catch
+            {
+
+                throw new Exception("Failed do get product");
             }
         }
     }
