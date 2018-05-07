@@ -81,7 +81,7 @@ namespace DiscStore.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,Name,Description,Artist,Price,PremiereDate,selectedCategoryID,Categories")] ProductViewModel product, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "ProductID,Name,Description,Artist,Price,PremiereDate,selectedCategoryID,Categories,PictureData,PictureMimeType")] ProductViewModel product, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {

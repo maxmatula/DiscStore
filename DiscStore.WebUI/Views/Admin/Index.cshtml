@@ -1,23 +1,27 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
     Layout = "~/Views/Shared/_FluidLayout.cshtml";
 }
-<div class="col-xs-9 col-xs-offset-3">
-    <h2>Panel Administracyjny - DiscStore</h2>
 
-    <div>
-        <h3>Kategorie</h3>
-        @Html.ActionLink("Dodaj kategorię", "Create", "Category")<br />
-        @Html.Action("Category", "Admin")
-
-    </div>
-
-    <div>
-        <h3>Produkty</h3>
-        @Html.ActionLink("Dodaj produkt", "Create", "Product")<br />
-        @Html.Action("Product", "Admin")
+<div class="container">
+    <div class="row">
+        <div class="col-10 mr-auto">
+            <h2>Panel Administracyjny - DiscStore</h2>
+            <br />
+            <h3>Kategorie</h3>
+            @Html.ActionLink("Dodaj kategorię", "Create", "Category")
+            <div class="row">
+                <div class="col-12">
+                    @Html.Action("Category", "Admin")
+                </div>
+            </div>
+            <h3>Produkty</h3>
+            @Html.ActionLink("Dodaj produkt", "Create", "Product")
+            <div class="row">
+                <div class="col-12">
+                    @Html.Action("Product", "Admin")
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
 

@@ -6,104 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title — DiscStore</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&amp;subset=latin-ext" rel="stylesheet">
+    @Styles.Render("~/Content/font-awesome/fa-solid.min.css")
+    @Styles.Render("~/Content/font-awesome/fontawesome.min.css")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body class="home-layout">
-    <!--Navigation-->
-    <nav class="navbar navbar-fixed-top home-navbar" role="navigation">
-        <div class="container">
-            <div class="row">
-                <div class="collapse navbar-collapse home-navbar__collapse">
-                    <a class="navbar-brand" href="#">DiscStore</a>
-                    <ul class="nav navbar-nav">
-                        <li class="active">
-                            @Html.ActionLink("Kategorie", "Index", "Category")
+
+<body class="fixed-body-position">
+    <!--Main Navigation-->
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark dsmaincolor scrolling-navbar">
+            <div class="container col-sm-10">
+                <a class="navbar-brand" href="#"><strong>DiscStore</strong></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "Home")">Strona Główna</a>
                         </li>
-                        <li>
-                            @Html.ActionLink("Wszystkie płyty", "Index", "Home")
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "Category")">Kategorie</a>
                         </li>
-                        <li>
-                            @Html.ActionLink("Nowości", "Newest", "Product")
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Newest", "Product")">Nowości</a>
                         </li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            @Html.Action("Summary", "Cart")
-                        </li>
-                    </ul>
-                    @if (User.Identity.IsAuthenticated == true)
-                    {
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="navbar-text welcome-text-ds">
-                                <span class="text-thin">Zalogowano jako:</span> @Session["Name"] @Session["Surname"]
+                    <ul class="navbar-nav navbar-right">
+                        @if (User.Identity.IsAuthenticated == true)
+                        {
+                            <li class="navbar-text text-white text-sm-center mr-3">
+                                <span class="text-thin">Witaj:</span> @Session["Name"] @Session["Surname"]
                             </li>
                             <li>
-                                <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fas fa-power-off "></i> Wyloguj</a>
+                                @Html.Action("Summary", "Cart")
                             </li>
-                        </ul>
-                        using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" }))
-                        {@Html.AntiForgeryToken()}
-                }
-                else
-                {
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="@Url.Action("Login","Account")">
-                                <i class="fas fa-sign-in-alt"></i> Zaloguj się
-                            </a>
-                        </li>
+                            <li>
+                                <a class="text-white nav-link" href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+                            </li>
+                            using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                            }
+                        }
+                        else
+                        {
+                            <li>
+                                @Html.Action("Summary", "Cart")
+                            </li>
+                            <li class="nav-link">
+                                <a class="text-center text-white" href="@Url.Action("Login","Account")">
+                                    <i class="fas fa-user"></i> Zaloguj się
+                                </a>
+                            </li>
+
+                        }
                     </ul>
-                }
+
                 </div>
             </div>
-        </div>
-    </nav>
-    <!--Navigation End-->>
-
+        </nav>
+        <!--Main Navigation-->
+    </header>
     <main>
-        <!--Slider-->
-        <div id="homepageslider" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-                <li data-target="#Carousel" data-slide-to="1"></li>
-                <li data-target="#Carousel" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img src="~/Content/Images/sl1.png" alt="">
-                </div>
-                <div class="item">
-                    <img src="~/Content/Images/sl2.png" alt="">
-                </div>
-                <div class="item">
-                    <img src="~/Content/Images/sl3.png" alt="">
-                </div>
-            </div>
-        </div>
-        <!--Slider end-->
-
-        <div class="col-xs-2 menu-left-homepage">
-            Menu
-        </div>
-        <div class="col-xs-10 main-render-section">
-            @RenderBody()
-        </div>
-
-    </main>
-
-    <footer class="home-footer">
         <div class="container">
             <div class="row">
-                <p class="home-footer__copy">DiscStore &copy; @DateTime.Now.Year</p>
+                @RenderBody()
             </div>
+            <!--Container end-->
         </div>
-    </footer>
+    </main>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
     @Scripts.Render("~/bundles/bootstrap")
-
     @RenderSection("scripts", required: false)
 </body>
 </html>
+

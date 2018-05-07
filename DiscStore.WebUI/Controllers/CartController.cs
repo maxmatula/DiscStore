@@ -47,6 +47,15 @@ namespace DiscStore.WebUI.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
+        public ActionResult ClearCart(Cart cart, string returnUrl)
+        {
+            if(cart != null)
+            {
+                cart.Clear();
+            }
+            return RedirectToAction("Index", new { returnUrl });
+        }
+
         public ActionResult Summary(Cart cart)
         {
             return PartialView(cart);

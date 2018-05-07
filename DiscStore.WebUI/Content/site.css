@@ -1,7 +1,7 @@
 ﻿@charset "UTF-8";
 
 body {
-    font: 400 16px "Roboto", sans-serif;
+    font-family: Roboto;
     line-height: 1.6;
     min-width: 320px;
     min-height: 400px;
@@ -10,49 +10,34 @@ body {
     color: #000;
     background-color: #fff;
 }
-.home-navbar {
-    background-color: #F99FA5;
-}
 
-    .home-navbar .navbar-brand {
-        color: #fff;
-    }
-    .home-navbar .navbar-nav li > a {
-        color: #fff;
-    }
-
-        .home-navbar .navbar-nav li > a:hover, .home-navbar .navbar-nav li > a:focus {
-            color: #FC7A83;
-        }
-
-.menu-left-homepage {
+.content {
     padding: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-right: solid 1px #F99FA5;
 }
 
-.main-render-section{
-    padding: 10px;
-    margin-top: 15px;
-    min-height: 700px;
-    
-
-    }
-
-.home-footer {
-    background-color: #F99FA5;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    color: #fff;
+.dsmaincolor {
+    background: linear-gradient(40deg,#ff6ec4,#7873f5) !important;
 }
 
-.home-footer__copy {
-    margin: 0;
+.btn-rounded {
+    text-transform: uppercase;
+    background: linear-gradient(40deg,#ff6ec4,#7873f5) !important;
+    border-radius: 10em !important;
+}
+
+.product {
+    box-sizing: content-box !important;
+}
+.image-ds-container {
+    height: 180px !important;
+}
+
+.image-ds-product {
+    object-fit: cover !important;
+}
+
+.fixed-body-position {
+    padding-top: 100px;
 }
 
 .login {
@@ -127,16 +112,15 @@ body {
 }
 
 .welcome-text-ds {
-    color:#fff;
+    color: #fff;
     font-weight: 700;
 }
 
-.text-thin{
-    font-weight:200;
+.text-thin {
+    font-weight: 200;
 }
 
-#upload-file{
+#upload-file {
     width: 500px;
     height: 500px;
 }
-

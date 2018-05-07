@@ -1,6 +1,5 @@
 ﻿@model List<DiscStore.Infrastructure.ViewModels.Product.ProductViewModel>
 
-
 @if (Model == null || Model.Count.Equals(0))
 {
     <p>Brak produktów</p>
@@ -10,35 +9,61 @@ else
 
     foreach (var p in Model)
     {
-        <div class="col-xs-3">
-            <a href="@Url.Action("Details", "Product", new { productId = p.ProductID})">
-                <div class="picture-ds">
-                    @if (p.PictureData == null || p.PictureData.Length == 0)
-                    {
-                        <span class="form-control-static">Brak zdjęcia</span>
-                    }
-                    else
-                    {
-                        <img class="image-thumbnail" width="200" height="200"
-                             src="@Url.Action("GetPicture", "Product", new { productId = p.ProductID })" />
-                    }
+
+        <!--Product-->
+        <div class="col-lg-4 col-md-8 mb-lg-0 mb-4 product">
+            <div class="card align-items-center">
+                <!--Picture-->
+                <div class="view zoom">
+                    <div class="image-ds-container">
+                        <a href="@Url.Action("Details", "Product", new { productId = p.ProductID})">
+                            @if (p.PictureData == null || p.PictureData.Length == 0)
+                            {
+                                <p>Brak zdjęcia</p>
+                            }
+                            else
+                            {
+                                <img src="@Url.Action("GetPicture", "Product", new { productId = p.ProductID })" class="img-fluid image-ds-product" alt="" />
+                            }
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
                 </div>
-                <div class="description-ps">
-                    <h3>@p.Name</h3>
-                    <h4>@p.Artist</h4>
-                    <h5>@p.PremiereDate</h5>
-                    <h3>@p.Price.ToString("c")</h3>
+                <!--Picture-->
+                <!--Content-->
+                <div class="card-body text-center">
+                    <!--Title and category-->
+                    <h5 class="grey-text text-thin">@p.Category.Name</h5>
+
+                    <h5>
+                        <strong>
+                            <a href="@Url.Action("Details", "Product", new { productId = p.ProductID})" class="dark-grey-text">@p.Name</a>
+                        </strong>
+                    </h5>
+                    <h6>
+                        <span class="text-thin">Wykonawca:</span>
+                        <a class="orange-text">@p.Artist</a>
+                    </h6>
+
+                    <h4 class="font-weight-bold blue-text">
+                        <strong>@p.Price.ToString("c")</strong>
+                    </h4>
+                    <div>
+                        @using (Html.BeginForm("AddToCart", "Cart"))
+                        {
+                            @Html.Hidden("productId", p.ProductID)
+                            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                            <input type="submit" class="btn btn-rounded" value="Dodaj do koszyka" />
+                        }
+                    </div>
+                    <!--Title and category-->
                 </div>
-            </a>
-            <div class="addcart-button">
-                @using (Html.BeginForm("AddToCart", "Cart"))
-                {
-                    @Html.Hidden("productId", p.ProductID)
-                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                    <input type="submit" class="btn" value="Dodaj do koszyka" />
-                }
+
+                <!--Content-->
             </div>
         </div>
-    }
+        <!--Product-->
 
+
+    }
 }

@@ -38,6 +38,7 @@ namespace DiscStore.Infrastructure.ViewModels.Product
         [Display(Name = "Kategoria")]
         public Guid selectedCategoryID { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }
+        public virtual Core.Entities.Category Category { get; set; }
 
     }
 }

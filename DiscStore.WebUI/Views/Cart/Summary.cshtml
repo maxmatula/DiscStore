@@ -1,11 +1,9 @@
 ﻿@model DiscStore.Core.Models.Cart
 
-<div class="navbar-right">
+<div class="navbar-text text-center mr-3">
     <a href="@Url.Action("Index", "Cart", new { returnUrl = Request.Url.PathAndQuery })">
-    <div class="navbar-text navbar-right navbar-link">
-        <b>W koszyku:</b>
+        <i class="fas fa-shopping-cart"></i>
         @Model.Lines.Sum(x => x.Quantity) sztuk,
         @Model.ComputeTotalValue().ToString("c")
-    </div>
     </a>
 </div>

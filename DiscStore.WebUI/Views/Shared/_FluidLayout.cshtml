@@ -5,12 +5,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title — DiscStore</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&amp;subset=latin-ext" rel="stylesheet">
+    @Styles.Render("~/Content/font-awesome/fa-solid.min.css")
+    @Styles.Render("~/Content/font-awesome/fontawesome.min.css")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <main class="fluid-content">
-        @RenderBody()
+    <main>
+            @RenderBody()
     </main>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
