@@ -17,6 +17,7 @@ namespace DiscStore.Infrastructure.DAL
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<FavouriteProduct> FavouriteProducts { get; set; }
 
         public static DSDbContext Create()
         {
