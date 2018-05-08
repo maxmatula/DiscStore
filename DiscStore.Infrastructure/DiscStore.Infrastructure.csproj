@@ -145,6 +145,14 @@
     <Compile Include="Migrations\201805041602076_ModelUpdateForDescription4.Designer.cs">
       <DependentUpon>201805041602076_ModelUpdateForDescription4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805080630200_FavouriteProduct.cs" />
+    <Compile Include="Migrations\201805080630200_FavouriteProduct.Designer.cs">
+      <DependentUpon>201805080630200_FavouriteProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805080640008_FavouriteProduct2.cs" />
+    <Compile Include="Migrations\201805080640008_FavouriteProduct2.Designer.cs">
+      <DependentUpon>201805080640008_FavouriteProduct2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Abstract\ICategoryService.cs" />
@@ -155,9 +163,7 @@
     <Compile Include="ViewModels\Category\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Product\ProductViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Identity\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DiscStore.Core\DiscStore.Core.csproj">
       <Project>{d213dfee-4b2b-4a34-91ad-b863173b479c}</Project>
@@ -201,6 +207,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805041602076_ModelUpdateForDescription4.resx">
       <DependentUpon>201805041602076_ModelUpdateForDescription4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805080630200_FavouriteProduct.resx">
+      <DependentUpon>201805080630200_FavouriteProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805080640008_FavouriteProduct2.resx">
+      <DependentUpon>201805080640008_FavouriteProduct2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

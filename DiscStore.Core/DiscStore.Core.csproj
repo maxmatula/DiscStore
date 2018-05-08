@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\FavouriteProduct.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Identity\AppUser.cs" />
     <Compile Include="Models\Cart.cs" />
