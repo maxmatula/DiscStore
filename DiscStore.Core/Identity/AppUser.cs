@@ -17,6 +17,5 @@ namespace DiscStore.Core.Identity
         [DataType(DataType.Text)]
         [StringLength(40)]
         public string Surname { get; set; }
-        public virtual ICollection<FavouriteProduct> FavouriteProduct { get; set; }
     }
 }

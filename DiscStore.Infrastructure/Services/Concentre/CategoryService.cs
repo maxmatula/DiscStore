@@ -31,7 +31,6 @@ namespace DiscStore.Infrastructure.Services.Concentre
             catch
             {
                 return false;
-                throw new Exception("Failed creating category!");
             }
         }
 
@@ -47,7 +46,6 @@ namespace DiscStore.Infrastructure.Services.Concentre
             catch
             {
                 return false;
-                throw new Exception("Failed deleting category!");
             }
         }
 
@@ -65,7 +63,6 @@ namespace DiscStore.Infrastructure.Services.Concentre
             catch
             {
                 return false;
-                throw new Exception("Failed editing category!");
             }
         }
 

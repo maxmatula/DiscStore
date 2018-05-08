@@ -3,6 +3,7 @@ using DiscStore.Infrastructure.DAL;
 using DiscStore.Infrastructure.Services.Abstract;
 using DiscStore.Infrastructure.Services.Concentre;
 using DiscStore.Infrastructure.ViewModels.Product;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -131,5 +132,6 @@ namespace DiscStore.WebUI.Controllers
             return RedirectToAction("Index", "Admin");
 
         }
+
     }
 }

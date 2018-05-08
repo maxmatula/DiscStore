@@ -42,7 +42,6 @@ namespace DiscStore.Infrastructure.Services.Concentre
             catch
             {
                 return false;
-                throw new Exception("Product Create failed!");
             }
         }
 
@@ -58,7 +57,6 @@ namespace DiscStore.Infrastructure.Services.Concentre
             catch
             {
                 return false;
-                throw new Exception("Prodyct Delete failed!");
             }
         }
 
@@ -87,30 +85,22 @@ namespace DiscStore.Infrastructure.Services.Concentre
             catch
             {
                 return false;
-                throw new Exception("Product Edit failed!");
             }
         }
 
         public ProductViewModel GetProductVMById(Guid productId)
         {
-            try
+            var product = db.Products.Find(productId);
+            var model = Mapper.Map<ProductViewModel>(product);
+            var categories = db.Categories.Select(f => new SelectListItem
             {
-                var product = db.Products.Find(productId);
-                var model = Mapper.Map<ProductViewModel>(product);
-                var categories = db.Categories.Select(f => new SelectListItem
-                {
-                    Value = f.CategoryID.ToString(),
-                    Text = f.Name
-                });
-                model.Categories = categories;
-                model.selectedCategoryID = product.CategoryID;
-                model.PremiereDate = product.PremiereDate;
-                return model;
-            }
-            catch
-            {
-                throw new Exception("Nie można znaleźć produktu!");
-            }
+                Value = f.CategoryID.ToString(),
+                Text = f.Name
+            });
+            model.Categories = categories;
+            model.selectedCategoryID = product.CategoryID;
+            model.PremiereDate = product.PremiereDate;
+            return model;
         }
 
         public ProductViewModel GetCreateModel()
@@ -127,45 +117,23 @@ namespace DiscStore.Infrastructure.Services.Concentre
 
         public List<ProductViewModel> GetProductVMList()
         {
-            try
-            {
-                var products = db.Products.ToList();
-                var model = Mapper.Map<List<ProductViewModel>>(products);
-                return model;
-            }
-            catch
-            {
-                throw new Exception("Nie można znaleźć produktów!");
-            }
+            var products = db.Products.ToList();
+            var model = Mapper.Map<List<ProductViewModel>>(products);
+            return model;
         }
 
         public List<ProductViewModel> GetNewProductVMList()
         {
-            try
-            {
-                var products = db.Products.ToList();
-                products = products.Where(x => x.PremiereDate.Date.AddDays(30) > DateTime.Now.Date).ToList();
-                var model = Mapper.Map<List<ProductViewModel>>(products);
-                return model;
-            }
-            catch
-            {
-                throw new Exception("Nie można znaleźć produktów!");
-            }
+            var products = db.Products.ToList();
+            products = products.Where(x => x.PremiereDate.Date.AddDays(30) > DateTime.Now.Date).ToList();
+            var model = Mapper.Map<List<ProductViewModel>>(products);
+            return model;
         }
 
         public Product GetProductById(Guid productId)
         {
-            try
-            {
-                var product = db.Products.Find(productId);
-                return product;
-            }
-            catch
-            {
-
-                throw new Exception("Failed do get product");
-            }
+            var product = db.Products.Find(productId);
+            return product;
         }
     }
 }

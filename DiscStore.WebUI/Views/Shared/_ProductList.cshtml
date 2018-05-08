@@ -11,7 +11,7 @@ else
     {
 
         <!--Product-->
-        <div class="col-lg-4 col-md-8 mb-lg-0 mb-4 product">
+        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
             <div class="card align-items-center">
                 <!--Picture-->
                 <div class="view zoom">
@@ -31,36 +31,36 @@ else
                 </div>
                 <!--Picture-->
                 <!--Content-->
-                <div class="card-body text-center">
+                <div class="card-body text-center product-body">
                     <!--Title and category-->
-                    <h5 class="grey-text text-thin">@p.Category.Name</h5>
-
-                    <h5>
+                    <p class="grey-text">@p.Category.Name</p>
+                    <h4>
                         <strong>
                             <a href="@Url.Action("Details", "Product", new { productId = p.ProductID})" class="dark-grey-text">@p.Name</a>
                         </strong>
-                    </h5>
+                    </h4>
                     <h6>
-                        <span class="text-thin">Wykonawca:</span>
+                        <a class="grey-text">Wykonawca:</a>
                         <a class="orange-text">@p.Artist</a>
                     </h6>
-
-                    <h4 class="font-weight-bold blue-text">
+                    <h2 class="font-weight-bold text-ds-color">
                         <strong>@p.Price.ToString("c")</strong>
-                    </h4>
-                    <div>
+                    </h2>
+                    <!--Title and category-->
+                </div>
+                <!--Content-->
+                <div class="product-footer">
+                    <div class="float-right">
                         @using (Html.BeginForm("AddToCart", "Cart"))
                         {
                             @Html.Hidden("productId", p.ProductID)
                             @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                            <input type="submit" class="btn btn-rounded" value="Dodaj do koszyka" />
+                            <input type="submit" class="btn btn-rounded btn-sm" value="Dodaj do koszyka" />
                         }
                     </div>
-                    <!--Title and category-->
                 </div>
-
-                <!--Content-->
             </div>
+
         </div>
         <!--Product-->
 

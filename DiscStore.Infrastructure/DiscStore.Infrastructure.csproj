@@ -101,71 +101,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\DSDbContext.cs" />
-    <Compile Include="Migrations\201805011744055_InitialCreate.cs" />
-    <Compile Include="Migrations\201805011744055_InitialCreate.Designer.cs">
-      <DependentUpon>201805011744055_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805012049324_Identity.cs" />
-    <Compile Include="Migrations\201805012049324_Identity.Designer.cs">
-      <DependentUpon>201805012049324_Identity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805012053119_Identity2.cs" />
-    <Compile Include="Migrations\201805012053119_Identity2.Designer.cs">
-      <DependentUpon>201805012053119_Identity2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805031003433_PremiereDate.cs" />
-    <Compile Include="Migrations\201805031003433_PremiereDate.Designer.cs">
-      <DependentUpon>201805031003433_PremiereDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805031142314_AppRoleDelete.cs" />
-    <Compile Include="Migrations\201805031142314_AppRoleDelete.Designer.cs">
-      <DependentUpon>201805031142314_AppRoleDelete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805031259599_PictureForProduct.cs" />
-    <Compile Include="Migrations\201805031259599_PictureForProduct.Designer.cs">
-      <DependentUpon>201805031259599_PictureForProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805031812556_ProductModelUpdateAuthor.cs" />
-    <Compile Include="Migrations\201805031812556_ProductModelUpdateAuthor.Designer.cs">
-      <DependentUpon>201805031812556_ProductModelUpdateAuthor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805041426108_ModelUpdateForDescription.cs" />
-    <Compile Include="Migrations\201805041426108_ModelUpdateForDescription.Designer.cs">
-      <DependentUpon>201805041426108_ModelUpdateForDescription.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805041526328_ModelUpdateForDescription2.cs" />
-    <Compile Include="Migrations\201805041526328_ModelUpdateForDescription2.Designer.cs">
-      <DependentUpon>201805041526328_ModelUpdateForDescription2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805041548278_ModelUpdateForDescription3.cs" />
-    <Compile Include="Migrations\201805041548278_ModelUpdateForDescription3.Designer.cs">
-      <DependentUpon>201805041548278_ModelUpdateForDescription3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805041602076_ModelUpdateForDescription4.cs" />
-    <Compile Include="Migrations\201805041602076_ModelUpdateForDescription4.Designer.cs">
-      <DependentUpon>201805041602076_ModelUpdateForDescription4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805080630200_FavouriteProduct.cs" />
-    <Compile Include="Migrations\201805080630200_FavouriteProduct.Designer.cs">
-      <DependentUpon>201805080630200_FavouriteProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805080640008_FavouriteProduct2.cs" />
-    <Compile Include="Migrations\201805080640008_FavouriteProduct2.Designer.cs">
-      <DependentUpon>201805080640008_FavouriteProduct2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Abstract\ICategoryService.cs" />
-    <Compile Include="Services\Abstract\IFavouriteProductService.cs" />
     <Compile Include="Services\Abstract\IProductService.cs" />
     <Compile Include="Services\Concentre\CategoryService.cs" />
-    <Compile Include="Services\Concentre\FavouriteProductService.cs" />
     <Compile Include="Services\Concentre\ProductService.cs" />
     <Compile Include="ViewModels\Cart\CartIndexViewModel.cs" />
     <Compile Include="ViewModels\Category\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Product\ProductViewModel.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DiscStore.Core\DiscStore.Core.csproj">
       <Project>{d213dfee-4b2b-4a34-91ad-b863173b479c}</Project>
@@ -175,47 +119,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805011744055_InitialCreate.resx">
-      <DependentUpon>201805011744055_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805012049324_Identity.resx">
-      <DependentUpon>201805012049324_Identity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805012053119_Identity2.resx">
-      <DependentUpon>201805012053119_Identity2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805031003433_PremiereDate.resx">
-      <DependentUpon>201805031003433_PremiereDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805031142314_AppRoleDelete.resx">
-      <DependentUpon>201805031142314_AppRoleDelete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805031259599_PictureForProduct.resx">
-      <DependentUpon>201805031259599_PictureForProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805031812556_ProductModelUpdateAuthor.resx">
-      <DependentUpon>201805031812556_ProductModelUpdateAuthor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805041426108_ModelUpdateForDescription.resx">
-      <DependentUpon>201805041426108_ModelUpdateForDescription.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805041526328_ModelUpdateForDescription2.resx">
-      <DependentUpon>201805041526328_ModelUpdateForDescription2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805041548278_ModelUpdateForDescription3.resx">
-      <DependentUpon>201805041548278_ModelUpdateForDescription3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805041602076_ModelUpdateForDescription4.resx">
-      <DependentUpon>201805041602076_ModelUpdateForDescription4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805080630200_FavouriteProduct.resx">
-      <DependentUpon>201805080630200_FavouriteProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805080640008_FavouriteProduct2.resx">
-      <DependentUpon>201805080640008_FavouriteProduct2.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
