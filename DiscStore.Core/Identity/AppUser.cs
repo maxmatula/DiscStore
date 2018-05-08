@@ -1,5 +1,4 @@
-﻿using DiscStore.Core.Entities;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,6 +16,5 @@ namespace DiscStore.Core.Identity
         [DataType(DataType.Text)]
         [StringLength(40)]
         public string Surname { get; set; }
-        public virtual ICollection<FavouriteProduct> FavouriteProduct { get; set; }
     }
 }
