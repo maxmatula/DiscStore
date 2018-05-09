@@ -19,11 +19,12 @@ namespace DiscStore.Infrastructure.Services.Concentre
         {
             try
             {
-                category.CategoryID = Guid.NewGuid();
-                Category cat = new Category();
-                cat.CategoryID = category.CategoryID;
-                cat.Name = category.Name;
-                cat.Description = category.Description;
+                Category cat = new Category
+                {
+                    CategoryID = Guid.NewGuid(),
+                    Name = category.Name,
+                    Description = category.Description
+                };
                 db.Categories.Add(cat);
                 db.SaveChanges();
                 return true;

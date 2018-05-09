@@ -50,7 +50,7 @@ else
                 </div>
                 <!--Content-->
                 <div class="product-footer">
-                    <div class="float-right">
+                    <div>
                         @using (Html.BeginForm("AddToCart", "Cart"))
                         {
                             @Html.Hidden("productId", p.ProductID)

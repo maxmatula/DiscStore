@@ -33,7 +33,7 @@ namespace DiscStore.WebUI.Controllers
             {
                 cart.AddItem(product, 1);
             }
-            return RedirectToAction("Index", new { returnUrl });
+            return Redirect(returnUrl);
         }
 
         public ActionResult RemoveFromCart(Cart cart, Guid productId, string returnUrl)
