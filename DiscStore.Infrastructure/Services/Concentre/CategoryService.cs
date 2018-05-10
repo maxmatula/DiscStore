@@ -21,7 +21,6 @@ namespace DiscStore.Infrastructure.Services.Concentre
             {
                 Category cat = new Category
                 {
-                    CategoryID = Guid.NewGuid(),
                     Name = category.Name,
                     Description = category.Description
                 };

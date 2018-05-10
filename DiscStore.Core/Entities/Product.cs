@@ -26,7 +26,7 @@ namespace DiscStore.Core.Entities
         public decimal Price { get; set; }
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [Column(TypeName = "Date")]
         public DateTime PremiereDate { get; set; }
         public byte[] PictureData { get; set; }
         [StringLength(50)]
@@ -34,5 +34,10 @@ namespace DiscStore.Core.Entities
         [ForeignKey("Category")]
         public Guid CategoryID { get; set; }
         public virtual Category Category { get; set; }
+
+        public Product()
+        {
+            ProductID = Guid.NewGuid();
+        }
     }
 }

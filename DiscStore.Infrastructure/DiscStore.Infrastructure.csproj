@@ -105,6 +105,10 @@
     <Compile Include="Migrations\201805091400476_InitialCreate.Designer.cs">
       <DependentUpon>201805091400476_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805100950495_UpdateforDate.cs" />
+    <Compile Include="Migrations\201805100950495_UpdateforDate.Designer.cs">
+      <DependentUpon>201805100950495_UpdateforDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Abstract\ICategoryService.cs" />
@@ -128,6 +132,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805091400476_InitialCreate.resx">
       <DependentUpon>201805091400476_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805100950495_UpdateforDate.resx">
+      <DependentUpon>201805100950495_UpdateforDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

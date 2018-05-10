@@ -19,15 +19,15 @@ namespace DiscStore.Infrastructure.Services.Concentre
         {
             try
             {
-                product.ProductID = Guid.NewGuid();
-                Product prod = new Product();
-                prod.ProductID = product.ProductID;
-                prod.Artist = product.Artist;
-                prod.CategoryID = product.selectedCategoryID;
-                prod.Description = product.Description;
-                prod.Name = product.Name;
-                prod.PremiereDate = product.PremiereDate;
-                prod.Price = product.Price;
+                Product prod = new Product
+                {
+                    Artist = product.Artist,
+                    CategoryID = product.selectedCategoryID,
+                    Description = product.Description,
+                    Name = product.Name,
+                    PremiereDate = product.PremiereDate,
+                    Price = product.Price
+                };
                 if (file != null)
                 {
                     prod.PictureMimeType = file.ContentType;
@@ -99,7 +99,6 @@ namespace DiscStore.Infrastructure.Services.Concentre
             });
             model.Categories = categories;
             model.selectedCategoryID = product.CategoryID;
-            model.PremiereDate = product.PremiereDate;
             return model;
         }
 

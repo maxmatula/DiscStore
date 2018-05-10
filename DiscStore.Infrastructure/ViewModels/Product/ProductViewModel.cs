@@ -31,7 +31,7 @@ namespace DiscStore.Infrastructure.ViewModels.Product
         [Required]
         [Display(Name = "Data wydania")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime PremiereDate { get; set; }
         public byte[] PictureData { get; set; }
         public string PictureMimeType { get; set; }

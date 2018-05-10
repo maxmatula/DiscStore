@@ -17,5 +17,10 @@ namespace DiscStore.Core.Entities
         [StringLength(200, ErrorMessage = "Opis kategorii nie może być dłuższy niż 200 znaków")]
         public string Description { get; set; }
         public virtual ICollection<Product> Products { get; set; }
+
+        public Category()
+        {
+            CategoryID = Guid.NewGuid();
+        }
     }
 }
