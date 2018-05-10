@@ -73,8 +73,8 @@ h6 {
 }
 
 .login {
-    color: #F99FA5;
-    background-color: #4a2f2f;
+    color: #fff;
+    background-color: #2b2b2b;
     position: relative;
     width: 100%;
     height: 100vh;
@@ -86,7 +86,8 @@ h6 {
     left: 50%;
     top: 50%;
     z-index: 1;
-    transform: translate(-50%, -50%);
+    transform:translate(-50%,-50%);
+   
 }
 
 .login__video {
@@ -102,22 +103,7 @@ h6 {
     padding: 0;
 }
 
-.btn-ds {
-    background-color: #fff;
-    color: #FC7A83;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 30px;
-    overflow: hidden;
-}
 
-    .btn-ds:hover {
-        background-color: #FC7A83;
-        color: #fff;
-    }
 
 
 .form .checkbox input {

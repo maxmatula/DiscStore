@@ -9,45 +9,45 @@
         <source src="~/Content/Media/Ma-Vibes.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
         <source src="~/Content/Media/Ma-Vibes.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
     </video>
-    <div class="container login__content">
-        <div class="row">
-            <div class="col-xs-12">
+    <div class="container justify-content-center login__content">
+        <div class="row justify-content-center">
+            <div class="col-12">
                 <h1 class="text-center">
-                    <img src="~/Content/Images/logo.png" width="300" alt="" class="img-responsive center-block" />
+                    <img src="~/Content/Images/logo.png" width="300" alt="" class="img-responsive center-block" /> <br />
                     <strong>Zaloguj się</strong>
                 </h1>
             </div>
-            <div class="col-lg-4 col-lg-offset-4">
-                <div class="row">
-                    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true)
-                        <div class="form-group col-xs-12">
-                            @Html.LabelFor(a => a.Email)
-                            @Html.TextBoxFor(a => a.Email, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(a => a.Email)
-                        </div>
-                        <div class="col-xs-12 form-group">
-                            @Html.LabelFor(a => a.Password)
-                            @Html.PasswordFor(a => a.Password, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(a => a.Password)
-                        </div>
-                        <div class="col-xs-12 form-group">
-                            <div class="checkbox">
-                                @Html.CheckBoxFor(a => a.RememberMe, new { @class = "form-control" })
-                                @Html.LabelFor(a => a.RememberMe)
-                            </div>
-                        </div>
+            <div class="col-lg-6 col-md-8 col-sm-10 col-12 justify-content-center">
 
-                        <p class="text-center">
-                            <input type="submit" class="btn btn-ds" value="Zaloguj się" />
-                        </p>
-                        <p class="text-center">Nie masz jeszcze konta? @Html.ActionLink("Zarejestruj się!", "Register", "Account")</p>
-                    }
-                </div>
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="md-form col-12">
+                        @Html.LabelFor(a => a.Email)
+                        @Html.TextBoxFor(a => a.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Email)
+                    </div>
+                    <div class="col-12 md-form">
+                        @Html.LabelFor(a => a.Password)
+                        @Html.PasswordFor(a => a.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Password)
+                    </div>
+                    <div class="col-12 md-form">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(a => a.RememberMe, new { @class = "form-control" })
+                            @Html.LabelFor(a => a.RememberMe)
+                        </div>
+                    </div>
+
+                    <p class="text-center product-footer">
+                        <input type="submit" class="btn btn-rounded" value="Zaloguj się" />
+                    </p>
+                    <p class="text-center text-white">Nie masz jeszcze konta? @Html.ActionLink("Zarejestruj się!", "Register", "Account")</p>
+                }
             </div>
         </div>
     </div>
 </div>
+
 

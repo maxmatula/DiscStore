@@ -11,50 +11,51 @@
         <source src="~/Content/Media/Ma-Vibes.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
     </video>
     <div class="container login__content">
-        <div class="row">
-            <div class="col-xs-12">
+        <div class="row justify-content-center">
+            <div class="col-12">
                 <h1 class="text-center">
-                    <img src="~/Content/Images/logo.png" width="300" alt="" class="img-responsive center-block" />
+                    <img src="~/Content/Images/logo.png" width="300" alt="" class="img-responsive center-block" /> <br />
                     <strong>Zarejestruj się</strong>
                 </h1>
             </div>
-            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
-                <div class="col-sm-6 col-sm-offset-3">
-                    <div class="row">
-                        <div class="form-group col-xs-12">
-                            @Html.LabelFor(a => a.Name)
-                            @Html.TextBoxFor(a => a.Name, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(a => a.Name)
-                        </div>
-                        <div class="form-group col-xs-12">
-                            @Html.LabelFor(a => a.Surname)
-                            @Html.TextBoxFor(a => a.Surname, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(a => a.Surname)
-                        </div>
-                        <div class="form-group col-xs-12">
-                            @Html.LabelFor(a => a.Email)
-                            @Html.TextBoxFor(a => a.Email, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(a => a.Email)
-                        </div>
-                        <div class="form-group col-xs-12">
-                            @Html.LabelFor(a => a.Password)
-                            @Html.PasswordFor(a => a.Password, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(a => a.Password)
-                        </div>
-                        <div class="form-group col-xs-12">
-                            @Html.LabelFor(a => a.ConfirmPassword)
-                            @Html.PasswordFor(a => a.ConfirmPassword, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(a => a.ConfirmPassword)
-                        </div>
-                        <p class="text-center">
-                            <input type="submit" class="btn btn-ds" value="Rejestracja" />
-                        </p>
+            <div class="col-lg-6 col-md-8 col-sm-10 col-12 justify-content-center">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "md-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="col-12 md-form">
+                        @Html.LabelFor(a => a.Name)
+                        @Html.TextBoxFor(a => a.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Name)
                     </div>
-                </div>
-            }
+                    <div class="col-12 md-form">
+                        @Html.LabelFor(a => a.Surname)
+                        @Html.TextBoxFor(a => a.Surname, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Surname)
+                    </div>
+                    <div class="col-12 md-form">
+                        @Html.LabelFor(a => a.Email)
+                        @Html.TextBoxFor(a => a.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Email)
+                    </div>
+                    <div class="col-12 md-form">
+                        @Html.LabelFor(a => a.Password)
+                        @Html.PasswordFor(a => a.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Password)
+                    </div>
+                    <div class="col-12 md-form">
+                        @Html.LabelFor(a => a.ConfirmPassword)
+                        @Html.PasswordFor(a => a.ConfirmPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.ConfirmPassword)
+                    </div>
+                    <p class="text-center">
+                        <input type="submit" class="btn btn-rounded" value="Rejestracja" />
+                    </p>
+
+
+                }
+
+            </div>
         </div>
     </div>
 </div>
