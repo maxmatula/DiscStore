@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title — DiscStore</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&amp;subset=latin-ext" rel="stylesheet">
+    @Styles.Render("~/Content/croppie.css")
     @Styles.Render("~/Content/font-awesome/fa-solid.min.css")
     @Styles.Render("~/Content/font-awesome/fontawesome.min.css")
     @Styles.Render("~/Content/css")
@@ -14,12 +15,13 @@
 <body>
     <header></header>
     <main>
-            @RenderBody()
+        @RenderBody()
     </main>
     <footer></footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/croppie.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>
