@@ -3,6 +3,8 @@ using DiscStore.Core.Models;
 using DiscStore.Infrastructure.Services.Abstract;
 using DiscStore.Infrastructure.Services.Concentre;
 using DiscStore.Infrastructure.ViewModels.Cart;
+using DiscStore.Infrastructure.ViewModels.Order;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +16,12 @@ namespace DiscStore.WebUI.Controllers
     public class CartController : Controller
     {
         private readonly IProductService productService;
+        private readonly IOrderService orderService;
 
         public CartController()
         {
             this.productService = new ProductService();
+            this.orderService = new OrderService();
         }
 
         public ActionResult Index(Cart cart, string returnUrl)
@@ -49,7 +53,7 @@ namespace DiscStore.WebUI.Controllers
 
         public ActionResult ClearCart(Cart cart, string returnUrl)
         {
-            if(cart != null)
+            if (cart != null)
             {
                 cart.Clear();
             }
@@ -59,6 +63,61 @@ namespace DiscStore.WebUI.Controllers
         public ActionResult Summary(Cart cart)
         {
             return PartialView(cart);
+        }
+
+        public ActionResult Checkout()
+        {
+            var userId = User.Identity.GetUserId();
+            var model = orderService.CheckShippingDetails(userId);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditShipping(ShippingDetailsViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = orderService.EditShippingDetails(model);
+                return RedirectToAction("Checkout", "Cart");
+            }
+            return View(model);
+        }
+
+        public ActionResult CreateShipping()
+        {
+            return View(new ShippingDetailsViewModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateShipping(ShippingDetailsViewModel model)
+        {
+            var userId = User.Identity.GetUserId();
+            if (ModelState.IsValid)
+            {
+                var result = orderService.CreateShippingDetails(model, userId);
+                return RedirectToAction("Checkout", "Cart");
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CompleteCheckout(Cart cart, Guid shippingId)
+        {
+            var userId = User.Identity.GetUserId();
+            if (cart != null && shippingId != null)
+            {
+                var result = orderService.CompleteOrder(shippingId, cart, userId);
+                return RedirectToAction("OrderComplete", "Cart");
+            }
+            return HttpNotFound();
+        }
+
+        public ActionResult OrderComplete()
+        {
+            return View();
         }
     }
 }

@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiscStore.Core.Entities
+namespace DiscStore.Infrastructure.ViewModels.Order
 {
-    public class ShippingDetails
+    public class ShippingDetailsViewModel
     {
-        [Key]
         public Guid ShippingID { get; set; }
         [Required]
         public string Name { get; set; }
@@ -23,12 +22,5 @@ namespace DiscStore.Core.Entities
         public string PostalCode { get; set; }
         [Required]
         public string Phone { get; set; }
-        public string UserID { get; set; }
-
-        public ShippingDetails()
-        {
-            ShippingID = Guid.NewGuid();
-        }
-
     }
 }

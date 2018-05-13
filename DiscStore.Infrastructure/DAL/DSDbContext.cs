@@ -17,6 +17,8 @@ namespace DiscStore.Infrastructure.DAL
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ShippingDetails> ShippingDetails { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         public static DSDbContext Create()
         {

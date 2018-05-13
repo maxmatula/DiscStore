@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DiscStore.Core.Entities;
 using DiscStore.Infrastructure.ViewModels.Category;
+using DiscStore.Infrastructure.ViewModels.Order;
 using DiscStore.Infrastructure.ViewModels.Product;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace DiscStore.WebUI
                 .ForMember(f => f.Categories, x => x.Ignore());
                 cfg.CreateMap<Category, CategoryViewModel>()
                 .ForMember(g => g.Products, x => x.Ignore());
+                cfg.CreateMap<ShippingDetails, ShippingDetailsViewModel>();
+                cfg.CreateMap<ShippingDetailsViewModel, ShippingDetails>();
 
             });
         }
