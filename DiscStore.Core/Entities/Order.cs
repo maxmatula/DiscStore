@@ -13,6 +13,7 @@ namespace DiscStore.Core.Entities
     {
         [Key]
         public Guid OrderID { get; set; }
+        public decimal Total { get; set; }
         public string UserID { get; set; }
         public Cart Cart { get; set; }
         [ForeignKey("ShippingDetails")]

@@ -34,6 +34,7 @@ namespace DiscStore.Infrastructure.Services.Concentre
             order.ShippingID = shippingId;
             order.UserID = userId;
             order.Cart = cart;
+            order.Total = cart.ComputeTotalValue();
             db.Orders.Add(order);
             db.SaveChanges();
             return true;

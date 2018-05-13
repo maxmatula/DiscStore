@@ -113,6 +113,10 @@
     <Compile Include="Migrations\201805131846248_Checkout.Designer.cs">
       <DependentUpon>201805131846248_Checkout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805131939139_Checkout2.cs" />
+    <Compile Include="Migrations\201805131939139_Checkout2.Designer.cs">
+      <DependentUpon>201805131939139_Checkout2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Abstract\ICategoryService.cs" />
@@ -145,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805131846248_Checkout.resx">
       <DependentUpon>201805131846248_Checkout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805131939139_Checkout2.resx">
+      <DependentUpon>201805131939139_Checkout2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
