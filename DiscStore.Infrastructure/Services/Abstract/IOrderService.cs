@@ -12,7 +12,8 @@ namespace DiscStore.Infrastructure.Services.Abstract
     {
         bool CreateShippingDetails(ShippingDetailsViewModel model, string userId);
         bool EditShippingDetails(ShippingDetailsViewModel model);
-        ShippingDetailsViewModel CheckShippingDetails(string userId);
+        List<ShippingDetailsViewModel> CheckShippingDetails(string userId);
         bool CompleteOrder(Guid shippingId, Cart cart, string userId);
+        ShippingDetailsViewModel FindById(Guid shippingId);
     }
 }

@@ -1,0 +1,21 @@
+﻿@model DiscStore.Infrastructure.ViewModels.Order.CheckoutViewModel
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_FluidLayout.cshtml";
+}
+
+<h2>Zamówienie</h2>
+
+
+
+
+
+<div>
+    @using (Html.BeginForm("CompleteCheckout", "Cart", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("shippingId", Model.ShippingDetailsViewModel.ShippingID)
+        <input type="submit" class="btn btn-rounded btn-lg" value="Zamawiam" />
+    }
+</div>

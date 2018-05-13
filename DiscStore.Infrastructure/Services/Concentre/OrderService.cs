@@ -17,14 +17,10 @@ namespace DiscStore.Infrastructure.Services.Concentre
     {
         private DSDbContext db = new DSDbContext();
 
-        public ShippingDetailsViewModel CheckShippingDetails(string userId)
+        public List<ShippingDetailsViewModel> CheckShippingDetails(string userId)
         {
-            var shipping = db.ShippingDetails.Where(x => x.UserID == userId).FirstOrDefault();
-            var model = Mapper.Map<ShippingDetailsViewModel>(shipping);
-            if(model == null)
-            {
-                model = new ShippingDetailsViewModel();
-            }
+            var shipping = db.ShippingDetails.Where(x => x.UserID == userId).ToList();
+            var model = Mapper.Map<List<ShippingDetailsViewModel>>(shipping);
             return model;
         }
 
@@ -74,5 +70,11 @@ namespace DiscStore.Infrastructure.Services.Concentre
             }
         }
 
+        public ShippingDetailsViewModel FindById(Guid shippingId)
+        {
+            var shipping = db.ShippingDetails.Find(shippingId);
+            var model = Mapper.Map<ShippingDetailsViewModel>(shipping);
+            return model;
+        }
     }
 }

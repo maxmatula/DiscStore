@@ -65,11 +65,33 @@ namespace DiscStore.WebUI.Controllers
             return PartialView(cart);
         }
 
-        public ActionResult Checkout()
+        public ActionResult ShippingDetails()
         {
             var userId = User.Identity.GetUserId();
             var model = orderService.CheckShippingDetails(userId);
             return View(model);
+        }
+
+        public ActionResult Checkout(Guid shippingId, Cart cart)
+        {
+            if(shippingId != null || cart.Lines.Equals(0))
+            {
+                CheckoutViewModel model = new CheckoutViewModel();
+                model.Cart = cart;
+                model.ShippingDetailsViewModel = orderService.FindById(shippingId);
+                return View(model);
+            }
+            return HttpNotFound();
+        }
+
+        public ActionResult EditShipping(Guid shippingId)
+        {
+            if(shippingId != null)
+            {
+                var model = orderService.FindById(shippingId);
+                return View(model);
+            }
+            return HttpNotFound();
         }
 
         [HttpPost]

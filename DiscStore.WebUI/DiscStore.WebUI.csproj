@@ -320,6 +320,10 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Cart\EditShipping.cshtml" />
+    <Content Include="Views\Cart\CreateShipping.cshtml" />
+    <Content Include="Views\Cart\ShippingDetails.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
