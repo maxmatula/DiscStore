@@ -164,7 +164,6 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\croppie.css" />
     <Content Include="Content\font-awesome\fa-solid.css" />
     <Content Include="Content\font-awesome\fa-solid.min.css" />
     <Content Include="Content\font-awesome\fontawesome.css" />
@@ -187,7 +186,6 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\croppie.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
