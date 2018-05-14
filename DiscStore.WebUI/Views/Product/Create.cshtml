@@ -7,7 +7,7 @@
 
 
 <h2>Create</h2>
-@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data", id = "form"  }))
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data", id = "form" }))
 
 {
     @Html.AntiForgeryToken()
@@ -63,10 +63,7 @@
                 </a>
             </div>
             <input type="hidden" id="imagebase64" name="file">
-            <div class="btn">
-                <a href="#" class="upload-result">Przytnij</a>
-            </div>
-            
+            <div id="croop-image"></div>
         </div>
     </div>
 
@@ -120,13 +117,11 @@
         $('#upload').on('change', function () { readFile(this); });
 
 
-        $('.upload-result').on('click', function (ev) {
+        $('#form').on('submit', function (ev) {
             $element.croppie('result', 'canvas').then(function (resp) {
                 $('#imagebase64').val(resp);
-                $('#form').submit();
             });
         });
-
     </script>
 }
 
