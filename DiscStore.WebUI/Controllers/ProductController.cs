@@ -60,10 +60,11 @@ namespace DiscStore.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,Description,Artist,Price,PremiereDate,selectedCategoryID,Categories,PictureData,PictureMimeType")] ProductViewModel product, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Name,Description,Artist,Price,PremiereDate,selectedCategoryID,Categories,PictureData,PictureMimeType")] ProductViewModel product, string file)
         {
             if (ModelState.IsValid)
             {
+
                 var result = productService.Create(product, file);
                 if (result == true)
                 {

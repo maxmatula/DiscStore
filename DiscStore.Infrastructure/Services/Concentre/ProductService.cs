@@ -6,6 +6,7 @@ using DiscStore.Infrastructure.ViewModels.Product;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,7 +16,7 @@ namespace DiscStore.Infrastructure.Services.Concentre
     public class ProductService : IProductService
     {
         private DSDbContext db = new DSDbContext();
-        public bool Create(ProductViewModel product, HttpPostedFileBase file)
+        public bool Create(ProductViewModel product, string fileStream)
         {
             try
             {
@@ -28,11 +29,19 @@ namespace DiscStore.Infrastructure.Services.Concentre
                     PremiereDate = product.PremiereDate,
                     Price = product.Price
                 };
-                if (file != null)
+                if (fileStream != null)
                 {
-                    prod.PictureMimeType = file.ContentType;
-                    prod.PictureData = new byte[file.ContentLength];
-                    file.InputStream.Read(prod.PictureData, 0, file.ContentLength);
+                    var extension = fileStream.Substring(fileStream.IndexOf(':') + 1);
+                    var extLength = extension.IndexOf(';');
+                    var allLength = extension.Length - extLength;
+                    extension = extension.Remove(extLength, allLength);
+
+                    var file = fileStream.Substring(fileStream.IndexOf(',') + 1);
+
+                    var bytes = Convert.FromBase64String(file);
+                    prod.PictureMimeType = extension;
+                    prod.PictureData = bytes;
+
                 }
 
                 db.Products.Add(prod);
@@ -134,5 +143,6 @@ namespace DiscStore.Infrastructure.Services.Concentre
             var product = db.Products.Find(productId);
             return product;
         }
+
     }
 }
