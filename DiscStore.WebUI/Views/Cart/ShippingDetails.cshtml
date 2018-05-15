@@ -1,0 +1,74 @@
+﻿@model IEnumerable<DiscStore.Infrastructure.ViewModels.Order.ShippingDetailsViewModel>
+
+@{
+    ViewBag.Title = "ShippingDetails";
+    Layout = "~/Views/Shared/_FluidLayout.cshtml";
+}
+
+<h2>Checkout</h2>
+
+<p>
+    @Html.ActionLink("Dodaj nowe dane do wysyłki", "CreateShipping", "Cart")
+</p>
+
+@if (Model == null)
+{
+    <h3>Nie masz zapisanych danych do wysyłki.</h3>
+    <h4><strong>aby kontunuować dodaj dane do wysyłki</strong></h4>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Street)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HouseNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Street)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HouseNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PostalCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.ActionLink("Wybierz", "Checkout", "Cart", new { shippingId = item.ShippingID }, null)
+                    @Html.ActionLink("Edytuj", "EditShipping", "Cart", new { shippingId = item.ShippingID },null)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}

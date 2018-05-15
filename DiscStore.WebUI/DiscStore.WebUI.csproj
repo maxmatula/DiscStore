@@ -169,6 +169,7 @@
     <Content Include="Content\font-awesome\fa-solid.min.css" />
     <Content Include="Content\font-awesome\fontawesome.css" />
     <Content Include="Content\font-awesome\fontawesome.min.css" />
+    <Content Include="Content\Images\boy-984293_1920.jpg" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\Ma-Vibes.jpg" />
     <Content Include="Content\Images\sl1.png" />
@@ -322,6 +323,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Cart\EditShipping.cshtml" />
+    <Content Include="Views\Cart\CreateShipping.cshtml" />
+    <Content Include="Views\Cart\ShippingDetails.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Cart\OrderComplete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
