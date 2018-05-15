@@ -29,7 +29,7 @@
                     @foreach (var line in Model.Cart.Lines)
                     {
                         <tr>
-                            <td><img src="@Url.Action("GetPicture", "Product", new { productId = line.Product.ProductID })" class="img-fluid image-cart-container" alt="" /></td>
+                            <td class="image-cart-container"><img src="@Url.Action("GetPicture", "Product", new { productId = line.Product.ProductID })" class="img-fluid image-cart" alt="" /></td>
                             <td>
                                 <h2>@line.Product.Name</h2>
                                 <p class="text-muted">@line.Product.Artist</p>

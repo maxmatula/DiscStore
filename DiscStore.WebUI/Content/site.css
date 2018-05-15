@@ -71,14 +71,14 @@ h6 {
 
 .image-cart-container {
     height: 150px;
-    width: 150px;
+    width: 200px;
+    
 }
 
 .image-cart {
     min-height: 150px;
     object-fit: cover;
-    object-position: 50% 50%;
-    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .fixed-body-position {
