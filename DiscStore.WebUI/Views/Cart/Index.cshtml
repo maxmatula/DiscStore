@@ -6,27 +6,31 @@
 }
 
 
-<div class="row content">
-    <div class="col-9 mx-auto">
+<div class="cart">
+        <img class="cart__bg" src="~/Content/Images/boy-984293_1920.jpg" />
+    <div class="cart-content col-9 mx-auto">
         <div class="text-center">
             <h2 class="text-thin">Twój koszyk</h2>
             <br />
         </div>
         <table class="table">
-            <thead>
+            <thead class="cart_head">
                 <tr>
-                    <th>Ilość</th>
-                    <th>Produkt</th>
-                    <th class="text-right">Cena</th>
-                    <th class="text-right">Wartość</th>
+                    <th></th>
+                    <th class="font-weight-bold">Produkt</th>
+                    <th class="font-weight-bold">Ilość</th>
+                    <th class="font-weight-bold">Cena</th>
+                    <th class="font-weight-bold">Wartość</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var line in Model.Cart.Lines)
                 {
                     <tr>
-                        <td class="text-center">@line.Quantity</td>
+                        <td><img src="@Url.Action("GetPicture", "Product", new { productId = line.Product.ProductID })" class="img-fluid image-cart-container" alt="" /></td>
                         <td class="text-left">@line.Product.Name</td>
+                        <td class="text-center">@line.Quantity</td>
                         <td class="text-right">@line.Product.Price.ToString("c")</td>
                         <td class="text-right">@((line.Quantity * line.Product.Price).ToString("c"))</td>
                         <td>
@@ -42,22 +46,25 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3" class="text-right">Razem:</td>
+                    <td colspan="4" class="text-right">Razem:</td>
                     <td class="text-right">@Model.Cart.ComputeTotalValue().ToString("c")</td>
                 </tr>
             </tfoot>
         </table>
+        <br />
+
+        <div class="mx-auto">
+            <a class="btn btn-primary" href="@Model.ReturnUrl">Kontynuuj zakupy</a>
+            <a class="btn btn-amber float-right" href="@Url.Action("ClearCart", "Cart", new { returnUrl = Model.ReturnUrl})">Wyczyść koszyk</a>
+            @if (Model.Cart.Lines.Any() == true)
+            {
+                <a class="btn btn-rounded btn-lg" href="@Url.Action("ShippingDetails", "Cart")">Zapłać za zakupy</a>
+            }
+
+        </div>
+
     </div>
 </div>
 
-<div class="row">
-    <div class="col-12 mr-auto">
-        <a class="btn btn-primary" href="@Model.ReturnUrl">Kontynuuj zakupy</a>
-        <a class="btn btn-amber float-right" href="@Url.Action("ClearCart", "Cart", new { returnUrl = Model.ReturnUrl})">Wyczyść koszyk</a>
 
-        <a class="btn btn-rounded btn-lg" href="@Url.Action("ShippingDetails", "Cart")">Zapłać za zakupy</a>
-
-
-    </div>
-</div>
 
