@@ -15,7 +15,6 @@ namespace DiscStore.Core.Entities
         public Guid OrderID { get; set; }
         public decimal Total { get; set; }
         public string UserID { get; set; }
-        public Cart Cart { get; set; }
         [ForeignKey("ShippingDetails")]
         public Guid ShippingID { get; set; }
         public virtual ShippingDetails ShippingDetails { get; set; }

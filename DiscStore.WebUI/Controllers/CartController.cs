@@ -119,7 +119,7 @@ namespace DiscStore.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 var result = orderService.CreateShippingDetails(model, userId);
-                return RedirectToAction("Checkout", "Cart");
+                return RedirectToAction("ShippingDetails", "Cart");
             }
             return View(model);
         }

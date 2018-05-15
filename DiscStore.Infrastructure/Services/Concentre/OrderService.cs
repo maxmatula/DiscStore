@@ -29,9 +29,18 @@ namespace DiscStore.Infrastructure.Services.Concentre
             Order order = new Order();
             order.ShippingID = shippingId;
             order.UserID = userId;
-            order.Cart = cart;
             order.Total = cart.ComputeTotalValue();
             db.Orders.Add(order);
+
+            foreach(var prod in cart.Lines)
+            {
+                OrderProducts prodline = new OrderProducts();
+                prodline.OrderID = order.OrderID;
+                prodline.Quantity = prod.Quantity;
+                prodline.ProductID = prod.Product.ProductID;
+                db.OrderProducts.Add(prodline);
+            }
+
             db.SaveChanges();
             return true;
         }
