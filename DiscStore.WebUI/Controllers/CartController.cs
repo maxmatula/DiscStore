@@ -13,6 +13,7 @@ using System.Web.Mvc;
 
 namespace DiscStore.WebUI.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         private readonly IProductService productService;
@@ -24,11 +25,13 @@ namespace DiscStore.WebUI.Controllers
             this.orderService = new OrderService();
         }
 
+        [AllowAnonymous]
         public ActionResult Index(Cart cart, string returnUrl)
         {
             return View(new CartIndexViewModel { Cart = cart, ReturnUrl = returnUrl });
         }
 
+        [AllowAnonymous]
         public ActionResult AddToCart(Cart cart, Guid productId, string returnUrl)
         {
             var product = productService.GetProductById(productId);
@@ -40,6 +43,7 @@ namespace DiscStore.WebUI.Controllers
             return Redirect(returnUrl);
         }
 
+        [AllowAnonymous]
         public ActionResult RemoveFromCart(Cart cart, Guid productId, string returnUrl)
         {
             var product = productService.GetProductById(productId);
@@ -51,6 +55,7 @@ namespace DiscStore.WebUI.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
+        [AllowAnonymous]
         public ActionResult ClearCart(Cart cart, string returnUrl)
         {
             if (cart != null)
@@ -60,10 +65,12 @@ namespace DiscStore.WebUI.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
+        [AllowAnonymous]
         public ActionResult Summary(Cart cart)
         {
             return PartialView(cart);
         }
+
 
         public ActionResult ShippingDetails()
         {
@@ -74,7 +81,7 @@ namespace DiscStore.WebUI.Controllers
 
         public ActionResult Checkout(Guid shippingId, Cart cart)
         {
-            if(shippingId != null || cart.Lines.Equals(0))
+            if (shippingId != null)
             {
                 CheckoutViewModel model = new CheckoutViewModel();
                 model.Cart = cart;
@@ -86,7 +93,7 @@ namespace DiscStore.WebUI.Controllers
 
         public ActionResult EditShipping(Guid shippingId)
         {
-            if(shippingId != null)
+            if (shippingId != null)
             {
                 var model = orderService.FindById(shippingId);
                 return View(model);
@@ -129,10 +136,15 @@ namespace DiscStore.WebUI.Controllers
         public ActionResult CompleteCheckout(Cart cart, Guid shippingId)
         {
             var userId = User.Identity.GetUserId();
-            if (cart != null && shippingId != null)
+            if (cart.Lines.Any() == true && shippingId != null)
             {
                 var result = orderService.CompleteOrder(shippingId, cart, userId);
-                return RedirectToAction("OrderComplete", "Cart");
+                if (result == true)
+                {
+                    cart.Clear();
+                    return RedirectToActionPermanent("OrderComplete", "Cart");
+                }
+                return HttpNotFound();
             }
             return HttpNotFound();
         }

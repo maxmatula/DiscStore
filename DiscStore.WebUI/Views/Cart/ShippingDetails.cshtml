@@ -21,9 +21,6 @@ else
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ShippingID)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
@@ -48,9 +45,6 @@ else
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ShippingID)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
@@ -69,8 +63,8 @@ else
                     @Html.DisplayFor(modelItem => item.Phone)
                 </td>
                 <td>
-                    @Html.ActionLink("Wybierz", "Checkout", "Cart", new { shippingId = item.ShippingID })
-                    @Html.ActionLink("Edytuj", "Edit", new { shippingId = item.ShippingID })
+                    @Html.ActionLink("Wybierz", "Checkout", "Cart", new { shippingId = item.ShippingID }, null)
+                    @Html.ActionLink("Edytuj", "EditShipping", "Cart", new { shippingId = item.ShippingID },null)
                 </td>
             </tr>
         }

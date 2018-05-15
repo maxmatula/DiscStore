@@ -324,6 +324,7 @@
     <Content Include="Views\Cart\CreateShipping.cshtml" />
     <Content Include="Views\Cart\ShippingDetails.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Cart\OrderComplete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "OrderComplete";
+    Layout = "~/Views/Shared/_FluidLayout.cshtml";
+}
+
+<div class="alert-success">
+    <h2>Sukces</h2>
+    <p><strong>Dziękujemy</strong> Twoje zamówienie zostało przesłane do realizacji i w ciągu 24 godzin zostanie wysłane na podany adres</p>
+</div>
+
+<div class="btn btn-success btn-lg">
+    @Html.ActionLink("Powrót do strony głównej", "Index", "Home")
+</div>
+
+
