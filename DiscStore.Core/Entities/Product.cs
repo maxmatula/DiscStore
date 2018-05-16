@@ -39,5 +39,6 @@ namespace DiscStore.Core.Entities
         {
             ProductID = Guid.NewGuid();
         }
+
     }
 }

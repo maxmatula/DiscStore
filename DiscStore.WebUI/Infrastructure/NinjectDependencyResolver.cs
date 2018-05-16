@@ -31,6 +31,7 @@ namespace DiscStore.WebUI.Infrastructure
         {
             kernel.Bind<IProductService>().To<ProductService>();
             kernel.Bind<ICategoryService>().To<CategoryService>();
+            kernel.Bind<IOrderService>().To<OrderService>();
         }
     }
 }
