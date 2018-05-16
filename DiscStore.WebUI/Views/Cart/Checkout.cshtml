@@ -5,17 +5,124 @@
     Layout = "~/Views/Shared/_FluidLayout.cshtml";
 }
 
-<h2>Zamówienie</h2>
+<div class="cart">
+    <img class="cart__bg" src="~/Content/Images/boy-984293_19203.png" />
+    <div class="cart-content">
+        <div class="col-lg-9 col-12 mx-auto">
+            <div class="text-center">
+                <h2 class="font-weight-bold fa-3x">Twoje zamówienie</h2>
+                <br />
+            </div>
+            <table class="table ds-table">
+                <thead class="cart_head">
+                    <tr>
+                        <th></th>
+                        <th class="font-weight-bold">Produkt</th>
+                        <th class="font-weight-bold">Ilość</th>
+                        <th class="font-weight-bold">Cena</th>
+                        <th class="font-weight-bold">Wartość</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var line in Model.Cart.Lines)
+                    {
+                        <tr>
+                            <td></td>
+                            <td>
+                                <h2>@line.Product.Name</h2>
+                                <p class="text-muted">@line.Product.Artist</p>
+                            </td>
+                            <td><h3>@line.Quantity</h3></td>
+                            <td><h3>@line.Product.Price.ToString("c")</h3></td>
+                            <td><h3>@((line.Quantity * line.Product.Price).ToString("c"))</h3></td>
+                            <td></td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-right"> <h2 class="fa-2x">Razem:</h2></td>
+                        <td class=""><h2 class="fa-2x"><strong>@Model.Cart.ComputeTotalValue().ToString("c")</strong></h2></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
 
+            <div class="text-center">
+                <h2 class="font-weight-bold fa-3x">Dane do wysyłki</h2>
+                <br />
+            </div>
+            <table class="table ds-table">
+                <thead class="cart_head">
+                    <tr>
+                        <th class="font-weight-bold">
+                            @Html.DisplayNameFor(model => model.ShippingDetailsViewModel.Name)
+                        </th>
+                        <th class="font-weight-bold">
+                            @Html.DisplayNameFor(model => model.ShippingDetailsViewModel.Street)
+                        </th>
+                        <th class="font-weight-bold">
+                            @Html.DisplayNameFor(model => model.ShippingDetailsViewModel.HouseNumber)
+                        </th>
+                        <th class="font-weight-bold">
+                            @Html.DisplayNameFor(model => model.ShippingDetailsViewModel.City)
+                        </th>
+                        <th class="font-weight-bold">
+                            @Html.DisplayNameFor(model => model.ShippingDetailsViewModel.PostalCode)
+                        </th>
+                        <th class="font-weight-bold">
+                            @Html.DisplayNameFor(model => model.ShippingDetailsViewModel.Phone)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h3>@Html.DisplayFor(modelItem => Model.ShippingDetailsViewModel.Name)</h3>
+                        </td>
+                        <td>
+                            <h3>@Html.DisplayFor(modelItem => Model.ShippingDetailsViewModel.Street)</h3>
+                        </td>
+                        <td>
+                            <h3>
+                                @Html.DisplayFor(modelItem => Model.ShippingDetailsViewModel.HouseNumber)
+                            </h3>
+                        </td>
+                        <td>
+                            <h3>
+                                @Html.DisplayFor(modelItem => Model.ShippingDetailsViewModel.City)
+                            </h3>
+                        </td>
+                        <td>
+                            <h3>
+                                @Html.DisplayFor(modelItem => Model.ShippingDetailsViewModel.PostalCode)
+                            </h3>
+                        </td>
+                        <td>
+                            <h3>
+                                @Html.DisplayFor(modelItem => Model.ShippingDetailsViewModel.Phone)
+                            </h3>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="col-12 text-left">
+                @Html.ActionLink("Rezygnuję","Index","Home", null, new { @class = "btn btn-sm btn-danger"})
+            </div>
 
-
-
-
-<div>
-    @using (Html.BeginForm("CompleteCheckout", "Cart", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-        @Html.Hidden("shippingId", Model.ShippingDetailsViewModel.ShippingID)
-        <input type="submit" class="btn btn-rounded btn-lg" value="Zamawiam" />
-    }
+            <div class="col-12 text-center">
+                @using (Html.BeginForm("CompleteCheckout", "Cart", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("shippingId", Model.ShippingDetailsViewModel.ShippingID)
+                    <input type="submit" class="btn btn-success btn-lg font-weight-bold fa-4x" value="Akceptuję zamówienie" />
+                }
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
+
