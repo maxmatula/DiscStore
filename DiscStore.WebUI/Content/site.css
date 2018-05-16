@@ -148,7 +148,11 @@ h6 {
     color: #fff!important;
 }
 
-.login .md-form label {
+.form-ds .form-control {
+    color: #fff !important;
+}
+
+.md-form label {
     color: #fff!important;
 }
 

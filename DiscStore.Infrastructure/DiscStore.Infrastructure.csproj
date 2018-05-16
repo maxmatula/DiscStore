@@ -121,6 +121,14 @@
     <Compile Include="Migrations\201805151425360_OrderProduct.Designer.cs">
       <DependentUpon>201805151425360_OrderProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805161954549_PhoneUpdate.cs" />
+    <Compile Include="Migrations\201805161954549_PhoneUpdate.Designer.cs">
+      <DependentUpon>201805161954549_PhoneUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805162010597_PhoneUpdate2.cs" />
+    <Compile Include="Migrations\201805162010597_PhoneUpdate2.Designer.cs">
+      <DependentUpon>201805162010597_PhoneUpdate2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Abstract\ICategoryService.cs" />
@@ -160,6 +168,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805151425360_OrderProduct.resx">
       <DependentUpon>201805151425360_OrderProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805161954549_PhoneUpdate.resx">
+      <DependentUpon>201805161954549_PhoneUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805162010597_PhoneUpdate2.resx">
+      <DependentUpon>201805162010597_PhoneUpdate2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

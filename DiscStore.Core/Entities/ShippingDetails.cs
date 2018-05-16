@@ -22,7 +22,7 @@ namespace DiscStore.Core.Entities
         [Required]
         public string PostalCode { get; set; }
         [Required]
-        public string Phone { get; set; }
+        public long Phone { get; set; }
         public string UserID { get; set; }
 
         public ShippingDetails()
