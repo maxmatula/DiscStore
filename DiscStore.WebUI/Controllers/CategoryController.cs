@@ -21,9 +21,14 @@ namespace DiscStore.WebUI.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var model = categoryService.GetList();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Name.Contains(searchString)).ToList();
+            }
             return View(model);
         }
         [AllowAnonymous]

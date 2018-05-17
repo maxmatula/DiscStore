@@ -24,9 +24,22 @@ namespace DiscStore.WebUI.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Index(string searchString = null)
         {
             var model = productService.GetProductVMList();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Name.ToLower().Contains(searchString.ToLower()) || 
+                    x.Artist.ToLower().Contains(searchString.ToLower()) || 
+                    x.Category.Name.ToLower().Contains(searchString.ToLower())).ToList();
+            }
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_ProductList", model.ToList());
+            }
+
             return View(model);
         }
 

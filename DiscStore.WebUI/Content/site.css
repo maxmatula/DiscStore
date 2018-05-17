@@ -58,6 +58,25 @@ h6 {
     border-radius: 10em !important;
 }
 
+.search-form__wrapper {
+    position: relative;
+}
+
+.search-form__submit {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    display: inline-block;
+    color: #aaa;
+}
+
+.search-form__input {
+    padding-left: 30px;
+}
+
 .image-ds-container {
     height: 200px;
 }

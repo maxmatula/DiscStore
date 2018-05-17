@@ -1,0 +1,10 @@
+﻿<div class="col-12 md-form search-form">
+    <form method="get" data-ajax="true" data-ajax-target="#productlist-section" data-ajax-update="#productlist-section">
+        <div class="search-form__wrapper">
+            @Html.TextBox("searchString", null, new { @class = "form-control search-form__input", placeholder = "Szukaj" })
+            <i class="fa fa-search"></i>
+            <button type="submit" class="search-form__submit"> </button>
+        </div>
+    </form>
+</div>
+<div class="clearfix"></div>
