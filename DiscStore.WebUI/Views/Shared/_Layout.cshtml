@@ -17,7 +17,7 @@
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark dsmaincolor scrolling-navbar">
             <div class="container col-sm-10">
-                <a class="navbar-brand" href="#"><strong>DiscStore</strong></a>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")"><strong>DiscStore</strong></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -25,9 +25,6 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="@Url.Action("Index", "Home")">Strona Główna</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index", "Category")">Kategorie</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="@Url.Action("Newest", "Product")">Nowości</a>
@@ -79,7 +76,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-2 col-md-3 col-12">
-                    Menu
+                    @Html.Partial("_Menu")
                 </div>
                 <div class="col-xl-10 col-md-9 col-12">
                         @RenderBody()

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<DiscStore.Infrastructure.ViewModels.Category.CategoryViewModel>
+
+@{
+    ViewBag.Title = "CategoryMenu";
+    Layout = "~/Views/Shared/_FluidLayout.cshtml";
+}
+
+<h2>Kategorie</h2>
+
+@foreach (var cat in Model)
+{
+    @Html.RouteLink(cat.Name, new
+    {
+        controller = "Home",
+        action = "Index",
+        category = cat.Name,
+        page = 1
+    }, new
+    {
+        @class = "btn btn-block btn-default"
+    })
+}
