@@ -36,15 +36,15 @@
                         <div class="card-body text-center product-body">
                             <!--Title and category-->
                             <p class="grey-text">@p.Category.Name</p>
-                            <h4 class="text-container">
+                            <h3 class="text-container">
                                 <strong>
-                                    <a href="@Url.Action("Details", "Product", new { productId = p.ProductID})" class="dark-grey-text">@p.Name</a>
+                                    <a href="@Url.Action("Details", "Product", new { productId = p.ProductID})" class="text-white">@p.Name</a>
                                 </strong>
-                            </h4>
-                            <h6>
+                            </h3>
+                            <h5>
                                 <a class="grey-text">Wykonawca:</a>
                                 <a class="orange-text">@p.Artist</a>
-                            </h6>
+                            </h5>
                             <h2 class="font-weight-bold text-ds-color">
                                 <strong>@p.Price.ToString("c")</strong>
                             </h2>
@@ -57,7 +57,7 @@
                                 {
                                     @Html.Hidden("productId", p.ProductID)
                                     @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                                    <input type="submit" class="btn btn-rounded btn-sm" value="Dodaj do koszyka" />
+                                    <input type="submit" class="btn btn-orange btn-sm" value="Dodaj do koszyka" />
                                 }
                             </div>
                         </div>
@@ -69,8 +69,11 @@
         }
     </div>
     <br />
-    Strona @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) z @Model.PageCount
+    <div>
+        Strona @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) z @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("Index",
-            new { page, category = ViewBag.Category }))
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+                new { page, category = ViewBag.Category }))
+    </div>
+    
 </div>

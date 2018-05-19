@@ -8,63 +8,39 @@
         }
         else
         {
+            <table class="table ds-table">
+                <thead>
+                    <tr>
+                        <th>Zdjęcie</th>
+                        <th>Nazwa</th>
+                        <th>Kategoria</th>
+                        <th>Artysta</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
 
-            foreach (var p in Model)
-            {
-                <!--Product-->
-                <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
-                    <div class="card align-items-center">
-                        <!--Picture-->
-                        <div class="view zoom">
-                            <div class="image-ds-container">
-                                <a href="@Url.Action("Details", "Product", new { productId = p.ProductID})">
-                                    @if (p.PictureData == null || p.PictureData.Length == 0)
-                                    {
-                                        <p>Brak zdjęcia</p>
-                                    }
-                                    else
-                                    {
-                                        <img src="@Url.Action("GetPicture", "Product", new { productId = p.ProductID })" class="img-fluid image-ds-product" alt="" />
-                                    }
-                                    <div class="mask rgba-white-slight"></div>
-                                </a>
-                            </div>
-                        </div>
-                        <!--Picture-->
-                        <!--Content-->
-                        <div class="card-body text-center product-body">
-                            <!--Title and category-->
-                            <p class="grey-text">@p.Category.Name</p>
-                            <h4>
-                                <strong>
-                                    <a href="@Url.Action("Details", "Product", new { productId = p.ProductID})" class="dark-grey-text">@p.Name</a>
-                                </strong>
-                            </h4>
-                            <h6>
-                                <a class="grey-text">Wykonawca:</a>
-                                <a class="orange-text">@p.Artist</a>
-                            </h6>
-                            <h2 class="font-weight-bold text-ds-color">
-                                <strong>@p.Price.ToString("c")</strong>
-                            </h2>
-                            <!--Title and category-->
-                        </div>
-                        <!--Content-->
-                        <div class="product-footer">
-                            <div>
-                                @using (Html.BeginForm("AddToCart", "Cart"))
-                                {
-                                    @Html.Hidden("productId", p.ProductID)
-                                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
-                                    <input type="submit" class="btn btn-rounded btn-sm" value="Dodaj do koszyka" />
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Product-->
-            }
+                    @foreach (var p in Model)
+                    {
 
+
+                        <tr>
+                            <td class="image-cart-container"><img src="@Url.Action("GetPicture", "Product", new { productId = p.ProductID })" class="img-fluid image-cart" alt="" /></td>
+                            <td>@p.Name</td>
+                            <td>@p.Category.Name</td>
+                            <td>@p.Artist</td>
+                            <td>
+                                <div class="btn btn-sm btn-amber">
+                                    <a href="@Url.Action("Details", "Product", new { productId = p.ProductID})">Edytuj</a>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+                    }
+                </tbody>
+            </table>
         }
     </div>
 </div>

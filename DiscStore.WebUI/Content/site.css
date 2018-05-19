@@ -49,7 +49,7 @@ h6 {
 }
 
 .text-ds-color {
-    color: #7873f5 !important;
+    color: #ff6ec4 !important;
 }
 
 .btn-rounded {
@@ -246,7 +246,7 @@ h6 {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: url('Images/boy-984293_19203.png');
+    background: url('Images/boy-dska.png');
     opacity: 0.6;
     background-position: top center;
     background-size: cover;
@@ -278,3 +278,6 @@ h6 {
     height: 55px;
 }
 
+.card {
+    background: rgba(45, 45, 45, 0.95);
+}
