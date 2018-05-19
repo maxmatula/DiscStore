@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace DiscStore.WebUI.Controllers
 {
@@ -24,27 +25,48 @@ namespace DiscStore.WebUI.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Index(string searchString = null, string category = null)
+        public ActionResult Index(string category, string searchString, int? page)
         {
             var model = productService.GetProductVMList();
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (searchString != null)
             {
-                model = model.Where(x => x.Name.ToLower().Contains(searchString.ToLower()) || 
+                page = 1;
+            }
+
+            if(category != null)
+            {
+                ViewBag.Category = category;
+            }
+
+            if (!String.IsNullOrEmpty(searchString) && !String.IsNullOrEmpty(category))
+            {
+                model = model.Where(x => x.Category.Name.ToLower() == category.ToLower()).ToList();
+
+                model = model.Where(x => x.Name.ToLower().Contains(searchString.ToLower()) ||
                     x.Artist.ToLower().Contains(searchString.ToLower())).ToList();
             }
 
-            if (!String.IsNullOrEmpty(category))
+            if (!String.IsNullOrEmpty(category) && String.IsNullOrEmpty(searchString))
             {
                 model = model.Where(x => x.Category.Name.ToLower() == category.ToLower()).ToList();
             }
 
-            if (Request.IsAjaxRequest())
+            if (!String.IsNullOrEmpty(searchString) && String.IsNullOrEmpty(category))
             {
-                return PartialView("_ProductList", model.ToList());
+                model = model.Where(x => x.Name.ToLower().Contains(searchString.ToLower()) ||
+                                   x.Artist.ToLower().Contains(searchString.ToLower())).ToList();
             }
 
-            return View(model);
+            int pageSize = 12;
+            int pageNumber = (page ?? 1);
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_ProductList", model.ToPagedList(pageNumber, pageSize));
+            }
+
+            return View(model.ToPagedList(pageNumber, pageSize));
         }
 
         [AllowAnonymous]
