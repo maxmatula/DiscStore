@@ -38,6 +38,10 @@ namespace DiscStore.WebUI.Controllers
             {
                 ViewBag.Category = category;
             }
+            else
+            {
+                ViewBag.Category = String.Empty;
+            }
 
             if (!String.IsNullOrEmpty(searchString) && !String.IsNullOrEmpty(category))
             {
