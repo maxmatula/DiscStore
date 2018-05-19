@@ -17,7 +17,7 @@
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
             <div class="container col-sm-10">
-                <a class="navbar-brand" href="@Url.Action("Index", "Home")"><strong>DiscStore</strong></a>
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")"><strong class="mr-4">DiscStore</strong></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -40,7 +40,7 @@
                         @if (User.Identity.IsAuthenticated == true)
                         {
                             <li class="navbar-text text-white text-sm-center mr-3">
-                                <span class="text-thin">Witaj:</span> @Session["Name"] @Session["Surname"]
+                                <span class="text-thin">Witaj:</span> <strong class="text-orange">@Session["Name"] @Session["Surname"]</strong>
                             </li>
                             <li>
                                 @Html.Action("Summary", "Cart")
