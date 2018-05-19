@@ -337,6 +337,7 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Category\CategoryMenu.cshtml" />
     <Content Include="Views\Shared\_ProductListAdmin.cshtml" />
+    <Content Include="Views\Shared\_LayoutNoLeftPanel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

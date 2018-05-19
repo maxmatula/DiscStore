@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title — DiscStore</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&amp;subset=latin-ext" rel="stylesheet">
+    @Styles.Render("~/Content/font-awesome/fa-solid.min.css")
+    @Styles.Render("~/Content/font-awesome/fontawesome.min.css")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body class="fixed-body-position">
+    <!--Main Navigation-->
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+            <div class="container col-sm-10">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")"><strong>DiscStore</strong></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "Home")">Strona Główna</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Newest", "Product")">Nowości</a>
+                        </li>
+                        @if (User.Identity.IsAuthenticated.Equals(true))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("FavList", "Product")">Ulubione</a>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav navbar-right">
+                        @if (User.Identity.IsAuthenticated == true)
+                        {
+                            <li class="navbar-text text-white text-sm-center mr-3">
+                                <span class="text-thin">Witaj:</span> @Session["Name"] @Session["Surname"]
+                            </li>
+                            <li>
+                                @Html.Action("Summary", "Cart")
+                            </li>
+                            <li>
+                                <a class="text-white nav-link" href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+                            </li>
+                            using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                            }
+                        }
+                        else
+                        {
+                            <li>
+                                @Html.Action("Summary", "Cart")
+                            </li>
+                            <li class="nav-link">
+                                <a class="text-center text-white" href="@Url.Action("Login","Account")">
+                                    <i class="fas fa-user"></i> Zaloguj się
+                                </a>
+                            </li>
+
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <div class="bg-image">
+
+        </div>
+        <!--Main Navigation-->
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    @RenderBody()
+                </div>
+            </div>
+            <!--Container end-->
+        </div>
+    </main>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

@@ -5,18 +5,21 @@
     Layout = "~/Views/Shared/_FluidLayout.cshtml";
 }
 
-<h2 class="mb-4">Kategorie</h2>
+<div class="menu">
+    <h2 class="mb-4 font-weight-bold text-center">Kategorie</h2>
 
-@foreach (var cat in Model)
-{
-    @Html.RouteLink(cat.Name, new
+    @foreach (var cat in Model)
     {
-        controller = "Home",
-        action = "Index",
-        category = cat.Name,
-        page = 1
-    }, new
-    {
-        @class = "cat-button"
-    })
-}
+        @Html.RouteLink(cat.Name, new
+        {
+            controller = "Home",
+            action = "Index",
+            category = cat.Name,
+            page = 1
+        }, new
+        {
+            @class = "cat-button"
+        })
+    }
+
+</div>

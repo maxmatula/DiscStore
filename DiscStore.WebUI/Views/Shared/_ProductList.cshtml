@@ -1,7 +1,7 @@
 ﻿@model PagedList.IPagedList<DiscStore.Infrastructure.ViewModels.Product.ProductViewModel>
 @using PagedList.Mvc
 
-<div id="productlist-section" class="col-12">
+<div id="productlist-section">
     <div class="row">
         @if (Model == null || Model.Count.Equals(0))
         {
@@ -36,7 +36,7 @@
                         <div class="card-body text-center product-body">
                             <!--Title and category-->
                             <p class="grey-text">@p.Category.Name</p>
-                            <h4>
+                            <h4 class="text-container">
                                 <strong>
                                     <a href="@Url.Action("Details", "Product", new { productId = p.ProductID})" class="dark-grey-text">@p.Name</a>
                                 </strong>
