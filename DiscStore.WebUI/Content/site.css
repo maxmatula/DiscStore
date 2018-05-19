@@ -7,8 +7,8 @@ body {
     min-height: 400px;
     position: relative;
     height: 100vh;
-    color: #000;
-    background-color: #fff;
+    color: #fff;
+    background-color: #2b2b2b;
 }
 
 h1 {
@@ -91,7 +91,6 @@ h6 {
 .image-cart-container {
     height: 150px;
     width: 200px;
-    
 }
 
 .image-cart {
@@ -125,7 +124,6 @@ h6 {
 
 .ds-table {
     background-color: rgba(33, 33, 33, 0.70);
-
 }
 
 .cart_head {
@@ -159,12 +157,11 @@ h6 {
     left: 50%;
     top: 50%;
     z-index: 1;
-    transform:translate(-50%,-50%);
-   
+    transform: translate(-50%,-50%);
 }
 
 .login .form-control {
-    color: #fff!important;
+    color: #fff !important;
 }
 
 .form-ds .form-control {
@@ -172,7 +169,7 @@ h6 {
 }
 
 .md-form label {
-    color: #fff!important;
+    color: #fff !important;
 }
 
 .login__video {
@@ -242,4 +239,35 @@ h6 {
     border-bottom: solid 1px #d4d4d4 !important;
     padding: 1em !important;
 }
+
+.bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('Images/boy-984293_19203.png');
+    opacity: 0.6;
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cat-button {
+    display: block;
+    text-align: center;
+    line-height: 50px;
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    color: #fff;
+    border-bottom: 1px solid #ced4da;
+}
+
+    .cat-button:hover {
+        background-color: rgba(43, 43, 43, 0.70);
+        color: #fff;
+    }
+
+
 

@@ -2,8 +2,8 @@
 
     @using (Ajax.BeginForm("Index", "Product", new { category = ViewBag.Category }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "productlist-section" }))
     {
-        <div class="search-form__wrapper">
-            @Html.TextBox("searchString", null, new { @class = "form-control search-form__input", placeholder = "Szukaj" })
+        <div class="search-form__wrapper my-0 text-white">
+            @Html.TextBox("searchString", null, new { @class = "form-control search-form__input text-white", placeholder = "Szukaj" })
             <i class="fa fa-search"></i>
             <button type="submit" class="search-form__submit"> </button>
         </div>

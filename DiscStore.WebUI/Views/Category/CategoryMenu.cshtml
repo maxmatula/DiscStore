@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_FluidLayout.cshtml";
 }
 
-<h2>Kategorie</h2>
+<h2 class="mb-4">Kategorie</h2>
 
 @foreach (var cat in Model)
 {
@@ -17,6 +17,6 @@
         page = 1
     }, new
     {
-        @class = "btn btn-block btn-default"
+        @class = "cat-button"
     })
 }

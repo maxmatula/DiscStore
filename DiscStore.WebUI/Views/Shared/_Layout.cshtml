@@ -15,7 +15,7 @@
 <body class="fixed-body-position">
     <!--Main Navigation-->
     <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark dsmaincolor scrolling-navbar">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
             <div class="container col-sm-10">
                 <a class="navbar-brand" href="@Url.Action("Index", "Home")"><strong>DiscStore</strong></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,6 +70,9 @@
                 </div>
             </div>
         </nav>
+        <div class="bg-image">
+
+        </div>
         <!--Main Navigation-->
     </header>
     <main>
@@ -79,7 +82,7 @@
                     @Html.Partial("_Menu")
                 </div>
                 <div class="col-xl-10 col-md-9 col-12">
-                        @RenderBody()
+                    @RenderBody()
                 </div>
             </div>
             <!--Container end-->
