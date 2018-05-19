@@ -70,10 +70,7 @@
     </div>
     <br />
     <div>
-        Strona @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) z @Model.PageCount
-
-        @Html.PagedListPager(Model, page => Url.Action("Index",
-                new { page, category = ViewBag.Category }))
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, category = ViewBag.Category }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
     </div>
     
 </div>

@@ -23,7 +23,8 @@ namespace DiscStore.WebUI
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
                       "~/Content/site.css",
-                      "~/Content/mdb.min.css"));
+                      "~/Content/mdb.min.css",
+                      "~/Content/PagedList.css"));
         }
     }
 }
