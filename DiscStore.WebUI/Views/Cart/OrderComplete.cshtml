@@ -4,13 +4,29 @@
     Layout = "~/Views/Shared/_FluidLayout.cshtml";
 }
 
-<div class="alert-success">
-    <h2>Sukces</h2>
-    <p><strong>Dziękujemy</strong> Twoje zamówienie zostało przesłane do realizacji i w ciągu 24 godzin zostanie wysłane na podany adres</p>
+<div class="cart">
+    <img class="cart__bg" src="~/Content/Images/boy-dska.png" />
+    <div class="cart-content">
+        <div class="col-lg-9 col-12 mx-auto">
+            <div class="text-center">
+                <h2 class="font-weight-bold fa-3x">Sukces!</h2>
+                <br />
+                <h4>Twóje zamówienie zostało przesłane do realizacji!</h4>
+                <h4>W ciągu 24 godzin zostanie do Ciebie wysłane</h4>
+                <h5>Poinformujemy cię wiadomością e-mail o przebiegu zamówienia</h5>
+                <br />
+                <h3>Dziękujemy <strong>@Session["Name"] @Session["Surname"]!</strong></h3>
+            </div>
+            <br />
+            <div class="col-12 text-center">
+                <div class="btn btn-success btn-lg">
+                    @Html.ActionLink("Powrót do strony głównej", "Index", "Home", null, new { @class = "text-white"})
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="btn btn-success btn-lg">
-    @Html.ActionLink("Powrót do strony głównej", "Index", "Home")
-</div>
+
 
 

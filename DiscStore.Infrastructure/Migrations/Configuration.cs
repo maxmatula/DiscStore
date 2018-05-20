@@ -1,5 +1,6 @@
 namespace DiscStore.Infrastructure.Migrations
 {
+    using DiscStore.Core.Entities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -14,10 +15,19 @@ namespace DiscStore.Infrastructure.Migrations
 
         protected override void Seed(DiscStore.Infrastructure.DAL.DSDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            //comment after first seed
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            //context.Categories.AddOrUpdate(x => x.CategoryID,
+            //    new Category() {  Name = "POP", Description = "Muzyka popularna" },
+            //    new Category() {  Name = "ROCK", Description = "Muzyka rockowa" },
+            //    new Category() {  Name = "KLASYCZNA", Description = "Muzyka klasyczna" },
+            //    new Category() {  Name = "METAL", Description = "Muzyka metal" },
+            //    new Category() {  Name = "HIP-HOP", Description = "Muzyka hip-hop" },
+            //    new Category() {  Name = "JAZZ", Description = "Muzyka jazz" },
+            //    new Category() {  Name = "FANTASY", Description = "Muzyka fantasy" },
+            //    new Category() {  Name = "FILMOWA", Description = "Muzyka filmowa" },
+            //    new Category() {  Name = "DISCO", Description = "Muzyka disco" }
+            //    );
         }
     }
 }

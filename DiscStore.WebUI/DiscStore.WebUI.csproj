@@ -103,6 +103,12 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -169,7 +175,7 @@
     <Content Include="Content\font-awesome\fa-solid.min.css" />
     <Content Include="Content\font-awesome\fontawesome.css" />
     <Content Include="Content\font-awesome\fontawesome.min.css" />
-    <Content Include="Content\Images\boy-984293_19203.png" />
+    <Content Include="Content\Images\boy-dska.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\Images\Ma-Vibes.jpg" />
     <Content Include="Content\Images\sl1.png" />
@@ -178,6 +184,7 @@
     <Content Include="Content\mdb.css" />
     <Content Include="Content\mdb.min.css" />
     <Content Include="Content\Media\Ma-Vibes.mp4" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\site.css" />
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
@@ -295,12 +302,10 @@
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Shared\_CategoryList.cshtml" />
-    <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Category\Create.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Category\Delete.cshtml" />
-    <Content Include="Views\Category\Details.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -328,6 +333,12 @@
     <Content Include="Views\Cart\ShippingDetails.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Cart\OrderComplete.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Category\CategoryMenu.cshtml" />
+    <Content Include="Views\Shared\_ProductListAdmin.cshtml" />
+    <Content Include="Views\Shared\_LayoutNoLeftPanel.cshtml" />
+    <Content Include="Views\Shared\_ProductListNoPaged.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -63,6 +63,22 @@ namespace DiscStore.Infrastructure.Services.Concentre
             }
         }
 
+        public bool DeleteShipping(Guid shippingId)
+        {
+            try
+            {
+                var shipping = db.ShippingDetails.Find(shippingId);
+                db.ShippingDetails.Remove(shipping);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+                throw new Exception("Can't delete shipping");
+            }
+        }
+
         public bool EditShippingDetails(ShippingDetailsViewModel model)
         {
             try

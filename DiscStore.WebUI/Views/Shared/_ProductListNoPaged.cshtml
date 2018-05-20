@@ -1,5 +1,5 @@
-﻿@model PagedList.IPagedList<DiscStore.Infrastructure.ViewModels.Product.ProductViewModel>
-@using PagedList.Mvc
+﻿@model List<DiscStore.Infrastructure.ViewModels.Product.ProductViewModel>
+
 
 <div id="productlist-section">
     <div class="row">
@@ -67,10 +67,5 @@
             }
 
         }
-    </div>
-    <br />
-    <div>
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, category = ViewBag.Category }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
-    </div>
-    
+    </div>   
 </div>

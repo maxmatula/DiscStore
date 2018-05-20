@@ -23,5 +23,6 @@ namespace DiscStore.Core.Entities
         {
             OrderID = Guid.NewGuid();
         }
+
     }
 }

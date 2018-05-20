@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace DiscStore.WebUI.Controllers
 {
@@ -24,10 +25,52 @@ namespace DiscStore.WebUI.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Index(string category, string searchString, int? page)
         {
             var model = productService.GetProductVMList();
-            return View(model);
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+
+            if (category != null)
+            {
+                ViewBag.Category = category;
+            }
+            else
+            {
+                ViewBag.Category = String.Empty;
+            }
+
+            if (!String.IsNullOrEmpty(searchString) && !String.IsNullOrEmpty(category))
+            {
+                model = model.Where(x => x.Category.Name.ToLower() == category.ToLower()).ToList();
+
+                model = model.Where(x => x.Name.ToLower().Contains(searchString.ToLower()) ||
+                    x.Artist.ToLower().Contains(searchString.ToLower())).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(category) && String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Category.Name.ToLower() == category.ToLower()).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(searchString) && String.IsNullOrEmpty(category))
+            {
+                model = model.Where(x => x.Name.ToLower().Contains(searchString.ToLower()) ||
+                                   x.Artist.ToLower().Contains(searchString.ToLower())).ToList();
+            }
+
+            int pageSize = 12;
+            int pageNumber = (page ?? 1);
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_ProductList", model.ToPagedList(pageNumber, pageSize));
+            }
+
+            return View(model.ToPagedList(pageNumber, pageSize));
         }
 
         [AllowAnonymous]

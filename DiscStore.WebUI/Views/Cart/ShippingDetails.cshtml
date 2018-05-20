@@ -5,70 +5,95 @@
     Layout = "~/Views/Shared/_FluidLayout.cshtml";
 }
 
-<h2>Checkout</h2>
+<div class="cart">
+    <img class="cart__bg" src="~/Content/Images/boy-dska.png" />
+    <div class="cart-content">
+        <div class="col-lg-9 col-12 mx-auto">
+            <div class="text-center">
+                <h2 class="font-weight-bold fa-3x">Dane do wysyłki</h2>
+                <br />
+            </div>
+            <div class="btn btn-lg btn-success font-weight-bold">
+                @Html.ActionLink("Dodaj nowe dane do wysyłki", "CreateShipping", "Cart", null, new { @class = "text-white" })
+            </div>
+            <table class="table ds-table">
+                <thead class="cart_head">
+                    <tr>
+                        <th class="font-weight-bold">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th class="font-weight-bold">
+                            @Html.DisplayNameFor(model => model.Street)
+                        </th>
+                        <th class="font-weight-bold">
+                            @Html.DisplayNameFor(model => model.HouseNumber)
+                        </th>
+                        <th class="font-weight-bold">
+                            @Html.DisplayNameFor(model => model.City)
+                        </th>
+                        <th class="font-weight-bold">
+                            @Html.DisplayNameFor(model => model.PostalCode)
+                        </th>
+                        <th class="font-weight-bold">
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                            </td>
+                            <td>
+                                <h3>@Html.DisplayFor(modelItem => item.Street)</h3>
+                            </td>
+                            <td>
+                                <h3>
+                                    @Html.DisplayFor(modelItem => item.HouseNumber)
+                                </h3>
+                            </td>
+                            <td>
+                                <h3>
+                                    @Html.DisplayFor(modelItem => item.City)
+                                </h3>
+                            </td>
+                            <td>
+                                <h3>
+                                    @Html.DisplayFor(modelItem => item.PostalCode)
+                                </h3>
+                            </td>
+                            <td>
+                                <h3>
+                                    @Html.DisplayFor(modelItem => item.Phone)
+                                </h3>
+                            </td>
+                            <td>
+                                <div class="btn btn-sm btn-success">
+                                    @Html.ActionLink("Wybierz", "Checkout", "Cart", new { shippingId = item.ShippingID }, new { @class = "text-white" })
+                                </div>
+                                <div class="btn btn-sm btn-amber">
+                                    @Html.ActionLink("Edytuj", "EditShipping", "Cart", new { shippingId = item.ShippingID }, new { @class = "text-white" })
+                                </div>
 
-<p>
-    @Html.ActionLink("Dodaj nowe dane do wysyłki", "CreateShipping", "Cart")
-</p>
-
-@if (Model == null)
-{
-    <h3>Nie masz zapisanych danych do wysyłki.</h3>
-    <h4><strong>aby kontunuować dodaj dane do wysyłki</strong></h4>
-}
-else
-{
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Street)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HouseNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PostalCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Street)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HouseNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PostalCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    @Html.ActionLink("Wybierz", "Checkout", "Cart", new { shippingId = item.ShippingID }, null)
-                    @Html.ActionLink("Edytuj", "EditShipping", "Cart", new { shippingId = item.ShippingID },null)
-                </td>
-            </tr>
-        }
-
-    </table>
-
-}
+                            </td>
+                            <td>
+                                <div>
+                                    @using (Html.BeginForm("DeleteShipping", "Cart", FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.Hidden("shippingId", item.ShippingID)
+                                        <input type="submit" class="btn btn-sm btn-danger" value="Usuń" />
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

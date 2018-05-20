@@ -7,8 +7,8 @@ body {
     min-height: 400px;
     position: relative;
     height: 100vh;
-    color: #000;
-    background-color: #fff;
+    color: #fff;
+    background-color: #2b2b2b;
 }
 
 h1 {
@@ -49,13 +49,32 @@ h6 {
 }
 
 .text-ds-color {
-    color: #7873f5 !important;
+    color: #ff6ec4 !important;
 }
 
 .btn-rounded {
     text-transform: uppercase;
     background: linear-gradient(40deg,#ff6ec4,#7873f5) !important;
     border-radius: 10em !important;
+}
+
+.search-form__wrapper {
+    position: relative;
+}
+
+.search-form__submit {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    display: inline-block;
+    color: #aaa;
+}
+
+.search-form__input {
+    padding-left: 30px;
 }
 
 .image-ds-container {
@@ -72,7 +91,6 @@ h6 {
 .image-cart-container {
     height: 150px;
     width: 200px;
-    
 }
 
 .image-cart {
@@ -106,7 +124,6 @@ h6 {
 
 .ds-table {
     background-color: rgba(33, 33, 33, 0.70);
-
 }
 
 .cart_head {
@@ -140,16 +157,19 @@ h6 {
     left: 50%;
     top: 50%;
     z-index: 1;
-    transform:translate(-50%,-50%);
-   
+    transform: translate(-50%,-50%);
 }
 
 .login .form-control {
-    color: #fff!important;
+    color: #fff !important;
 }
 
-.login .md-form label {
-    color: #fff!important;
+.form-ds .form-control {
+    color: #fff !important;
+}
+
+.md-form label {
+    color: #fff !important;
 }
 
 .login__video {
@@ -220,3 +240,119 @@ h6 {
     padding: 1em !important;
 }
 
+.bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('Images/boy-dska.png');
+    opacity: 0.6;
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cat-button {
+    display: block;
+    text-align: center;
+    line-height: 70px;
+    width: 100%;
+    height: 70px;
+    background-color: transparent;
+    color: #fff;
+    border-bottom: 1px solid #ced4da;
+}
+
+    .cat-button:hover {
+        background-color: rgba(43, 43, 43, 0.50);
+        color: #fff;
+    }
+
+.menu {
+    margin-right: 10px;
+
+}
+
+.text-container {
+    height: 55px;
+}
+
+.card {
+    background: rgba(45, 45, 45, 0.95);
+}
+
+.top-nav-collapse {
+    background-color: #2d2d2d!important;
+}
+
+.text-orange {
+    color: #f57c00 !important;
+}
+
+.navbar {
+    background-color: rgba(45, 45, 45, 0.80);
+}
+
+.footer-copyright {
+    background-color: rgba(45, 45, 45, 0.95);
+}
+
+.page-footer {
+    background-color: rgba(45, 45, 45, 0.80);
+}
+
+.product_details {
+    display: block;
+    height: auto;
+    width: 100%;
+    padding: 25px;
+    background-color: rgba(45, 45, 45, 0.80);
+}
+
+.category__product {
+    text-align: center;
+    height: 30px;
+    width: 60%;
+    margin: 0 auto;
+    border-bottom: 1px solid #ced4da;
+}
+
+.title__product{
+    margin-top: 30px;
+    min-height: 40px;
+}
+
+.price__product {
+    min-height: 40px;
+    padding-top: 15px;
+}
+
+.premiere__product {
+    min-height: 40px;
+    width: 100%;
+    padding: 10px;
+}
+
+.btn_product_buy {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    border: none;
+    height: 60px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+    .btn_product_buy:hover {
+        box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+    }
+
+.product__footer {
+    min-height: 100px;
+    padding: 20px;
+}
+
+.back_to_btn {
+    background-color: rgba(45, 45, 45, 0.80);
+}

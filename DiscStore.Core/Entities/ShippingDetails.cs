@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,13 +23,12 @@ namespace DiscStore.Core.Entities
         [Required]
         public string PostalCode { get; set; }
         [Required]
-        public string Phone { get; set; }
+        public long Phone { get; set; }
         public string UserID { get; set; }
 
         public ShippingDetails()
         {
             ShippingID = Guid.NewGuid();
         }
-
     }
 }

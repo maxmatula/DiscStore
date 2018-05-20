@@ -2,75 +2,65 @@
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutNoLeftPanel.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>ProductViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Artist)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Artist)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PremiereDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PremiereDate)
-        </dd>
-        <dt>
-            Okładka:
-        </dt>
-        <dd>
+<div class="product_details">
+    <div class="row">
+        <div class="col-md-6 col-12">
             @if (Model.PictureData == null || Model.PictureData.Length == 0)
             {
                 <span class="form-control-static">Brak zdjęcia</span>
             }
             else
             {
-                <img class="image-thumbnail" width="200" height="200"
-                     src="@Url.Action("GetPicture", "Product", new { productId = Model.ProductID })" />
+                <img src="@Url.Action("GetPicture", "Product", new { productId = Model.ProductID })" class="img-fluid image-cart" alt="" />
             }
-        </dd>
-    </dl>
+        </div>
+        <div class="col-md-6 col-12 text-center justify-content-center p-3">
+            <div class="category__product">
+                <h4 class="">@Model.Category.Name</h4>
+            </div>
+            <div class="title__product">
+                <h5><strong class="text-orange fa-2x">@Model.Name</strong></h5>
+            </div>
+            <h3>@Model.Artist</h3>
+            <div class="premiere__product">
+                Data Premiery: <strong>@Model.PremiereDate.ToShortDateString()</strong>
+            </div>
+            <div class="price__product">
+                <h4 class="fa-3x text-ds-color">
+                    <strong>
+                        @Model.Price.ToString("c")
+                    </strong>
+                </h4>
+            </div>
+        </div>
+        <div class="col-md-6 col-12 mt-4">
+            <h4><strong>Opis:</strong></h4>
+            <p>@Model.Description</p>
+        </div>
+        <div class="col-12 text-center justify-content-center product__footer">
+            <div>
+                @using (Html.BeginForm("AddToCart", "Cart"))
+                {
+                    @Html.Hidden("productId", Model.ProductID)
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                    <input type="submit" class="btn-orange btn_product_buy" value="Dodaj do koszyka" />
+                }
+            </div>
+        </div>
+    </div>
 </div>
+
 <p>
     @if (User.IsInRole("Admin"))
     {
         @Html.ActionLink("Edit", "Edit", new { productId = Model.ProductID })
         @Html.ActionLink("Delete", "Delete", new { productId = Model.ProductID })
     }
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Powrót do listy", "Index", null, new { @class = "text-white btn back_to_btn mt-3" })
 </p>
+
+

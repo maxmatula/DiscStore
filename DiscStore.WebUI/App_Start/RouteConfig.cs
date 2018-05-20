@@ -18,6 +18,13 @@ namespace DiscStore.WebUI
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Products",
+                url: "{controller}/{action}/{category}/{searchString}/{page}",
+                defaults: new { controller = "Home", action = "Index", category = UrlParameter.Optional, searchString = UrlParameter.Optional, page = UrlParameter.Optional }
+                );
+
         }
     }
 }

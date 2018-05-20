@@ -133,6 +133,19 @@ namespace DiscStore.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public ActionResult DeleteShipping(Guid shippingId)
+        {
+            if(shippingId != null)
+            {
+                var result = orderService.DeleteShipping(shippingId);
+                return RedirectToAction("ShippingDetails", "Cart");
+            }
+            return HttpNotFound();
+            
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CompleteCheckout(Cart cart, Guid shippingId)
         {
             var userId = User.Identity.GetUserId();

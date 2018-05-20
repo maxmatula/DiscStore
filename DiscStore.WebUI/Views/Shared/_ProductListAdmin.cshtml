@@ -1,0 +1,46 @@
+﻿@model List<DiscStore.Infrastructure.ViewModels.Product.ProductViewModel>
+
+<div id="productlist-section" class="col-12">
+    <div class="row">
+        @if (Model == null || Model.Count.Equals(0))
+        {
+            <p>Brak produktów</p>
+        }
+        else
+        {
+            <table class="table ds-table">
+                <thead>
+                    <tr>
+                        <th>Zdjęcie</th>
+                        <th>Nazwa</th>
+                        <th>Kategoria</th>
+                        <th>Artysta</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var p in Model)
+                    {
+
+
+                        <tr>
+                            <td class="image-cart-container"><img src="@Url.Action("GetPicture", "Product", new { productId = p.ProductID })" class="img-fluid image-cart" alt="" /></td>
+                            <td>@p.Name</td>
+                            <td>@p.Category.Name</td>
+                            <td>@p.Artist</td>
+                            <td>
+                                <div class="btn btn-sm btn-amber">
+                                    <a href="@Url.Action("Details", "Product", new { productId = p.ProductID})">Edytuj</a>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

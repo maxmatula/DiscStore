@@ -21,17 +21,12 @@ namespace DiscStore.WebUI.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult CategoryMenu()
         {
             var model = categoryService.GetList();
             return View(model);
         }
-        [AllowAnonymous]
-        public ActionResult Details(Guid categoryId)
-        {
-            var category = categoryService.GetById(categoryId);
-            return View(category);
-        }
+
 
         public ActionResult Create()
         {
