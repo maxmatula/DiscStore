@@ -291,5 +291,68 @@ h6 {
 }
 
 .navbar {
-    background-color: rgba(45, 45, 45, 0.80)
+    background-color: rgba(45, 45, 45, 0.80);
+}
+
+.footer-copyright {
+    background-color: rgba(45, 45, 45, 0.95);
+}
+
+.page-footer {
+    background-color: rgba(45, 45, 45, 0.80);
+}
+
+.product_details {
+    display: block;
+    height: auto;
+    width: 100%;
+    padding: 25px;
+    background-color: rgba(45, 45, 45, 0.80);
+}
+
+.category__product {
+    text-align: center;
+    height: 30px;
+    width: 60%;
+    margin: 0 auto;
+    border-bottom: 1px solid #ced4da;
+}
+
+.title__product{
+    margin-top: 30px;
+    min-height: 40px;
+}
+
+.price__product {
+    min-height: 40px;
+    padding-top: 15px;
+}
+
+.premiere__product {
+    min-height: 40px;
+    width: 100%;
+    padding: 10px;
+}
+
+.btn_product_buy {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    border: none;
+    height: 60px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+    .btn_product_buy:hover {
+        box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.3), 0 8px 22px 0 rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+    }
+
+.product__footer {
+    min-height: 100px;
+    padding: 20px;
+}
+
+.back_to_btn {
+    background-color: rgba(45, 45, 45, 0.80);
 }

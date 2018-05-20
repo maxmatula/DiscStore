@@ -40,7 +40,7 @@
                         @if (User.Identity.IsAuthenticated == true)
                         {
                             <li class="navbar-text text-white text-sm-center mr-3">
-                                <span class="text-thin">Witaj:</span> <strong class="text-orange">@Session["Name"] @Session["Surname"]</strong> 
+                                <span class="text-thin">Witaj:</span> <strong class="text-orange">@Session["Name"] @Session["Surname"]</strong>
                             </li>
                             <li>
                                 @Html.Action("Summary", "Cart")
@@ -88,6 +88,67 @@
             <!--Container end-->
         </div>
     </main>
+    <!--Footer-->
+    <footer class="page-footer font-small pt-4 mt-4">
+
+        <!--Footer Links-->
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+
+                <!--First column-->
+                <div class="col-md-4">
+
+                </div>
+                <!--/.First column-->
+                <!--Second column-->
+                <div class="col-md-4">
+                    <h4 class="text-uppercase font-weight-bold">
+                        <strong>Informacje</strong>
+                    </h4>
+                    <hr class="white accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Regulamin Strony</a>
+                        </li>
+                        <li>
+                            <a href="#!">Polityka Prywatności</a>
+                        </li>
+                        <li>
+                            <a href="#!">Zamówienia</a>
+                        </li>
+                        <li>
+                            <a href="#!">Kontakt</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.Second column-->
+                <div class="col-md-4">
+                    <h4 class="text-uppercase font-weight-bold">
+                        <strong>Kontakt</strong>
+                    </h4>
+                    <hr class="white accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <i class="fa fa-home mr-3"></i> Warszawa, Marweckiego 34/2
+                    </p>
+                    <p>
+                        <i class="fa fa-envelope mr-3"></i> biuro@discstore.com
+                    </p>
+                    <p>
+                        <i class="fa fa-phone mr-3"></i> + 01 234 567 88
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--/.Footer Links-->
+        <!--Copyright-->
+        <div class="footer-copyright py-3 text-center">
+            © 2018 Copyright:
+            <a href="#"><strong> DiscStore.com </strong> </a>
+        </div>
+        <!--/.Copyright-->
+
+    </footer>
+    <!--/.Footer-->
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
