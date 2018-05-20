@@ -1,0 +1,71 @@
+﻿@model List<DiscStore.Infrastructure.ViewModels.Product.ProductViewModel>
+
+
+<div id="productlist-section">
+    <div class="row">
+        @if (Model == null || Model.Count.Equals(0))
+        {
+            <p>Brak produktów</p>
+        }
+        else
+        {
+
+            foreach (var p in Model)
+            {
+                <!--Product-->
+                <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+                    <div class="card align-items-center">
+                        <!--Picture-->
+                        <div class="view zoom">
+                            <div class="image-ds-container">
+                                <a href="@Url.Action("Details", "Product", new { productId = p.ProductID})">
+                                    @if (p.PictureData == null || p.PictureData.Length == 0)
+                                    {
+                                        <p>Brak zdjęcia</p>
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Action("GetPicture", "Product", new { productId = p.ProductID })" class="img-fluid image-ds-product" alt="" />
+                                    }
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <!--Picture-->
+                        <!--Content-->
+                        <div class="card-body text-center product-body">
+                            <!--Title and category-->
+                            <p class="grey-text">@p.Category.Name</p>
+                            <h3 class="text-container">
+                                <strong>
+                                    <a href="@Url.Action("Details", "Product", new { productId = p.ProductID})" class="text-white">@p.Name</a>
+                                </strong>
+                            </h3>
+                            <h5>
+                                <a class="grey-text">Wykonawca:</a>
+                                <a class="orange-text">@p.Artist</a>
+                            </h5>
+                            <h2 class="font-weight-bold text-ds-color">
+                                <strong>@p.Price.ToString("c")</strong>
+                            </h2>
+                            <!--Title and category-->
+                        </div>
+                        <!--Content-->
+                        <div class="product-footer">
+                            <div>
+                                @using (Html.BeginForm("AddToCart", "Cart"))
+                                {
+                                    @Html.Hidden("productId", p.ProductID)
+                                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                                    <input type="submit" class="btn btn-orange btn-sm" value="Dodaj do koszyka" />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Product-->
+            }
+
+        }
+    </div>   
+</div>

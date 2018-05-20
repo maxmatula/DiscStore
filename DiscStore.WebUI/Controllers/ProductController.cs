@@ -34,7 +34,7 @@ namespace DiscStore.WebUI.Controllers
                 page = 1;
             }
 
-            if(category != null)
+            if (category != null)
             {
                 ViewBag.Category = category;
             }
