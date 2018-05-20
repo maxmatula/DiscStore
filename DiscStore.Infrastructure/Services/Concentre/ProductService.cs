@@ -69,7 +69,7 @@ namespace DiscStore.Infrastructure.Services.Concentre
             }
         }
 
-        public bool Edit(ProductViewModel product, HttpPostedFileBase file)
+        public bool Edit(ProductViewModel product, string fileStream)
         {
             try
             {
@@ -81,11 +81,18 @@ namespace DiscStore.Infrastructure.Services.Concentre
                 prod.PremiereDate = product.PremiereDate;
                 prod.Price = product.Price;
 
-                if (file != null)
+                if (fileStream != null)
                 {
-                    prod.PictureMimeType = file.ContentType;
-                    prod.PictureData = new byte[file.ContentLength];
-                    file.InputStream.Read(prod.PictureData, 0, file.ContentLength);
+                    var extension = fileStream.Substring(fileStream.IndexOf(':') + 1);
+                    var extLength = extension.IndexOf(';');
+                    var allLength = extension.Length - extLength;
+                    extension = extension.Remove(extLength, allLength);
+
+                    var file = fileStream.Substring(fileStream.IndexOf(',') + 1);
+
+                    var bytes = Convert.FromBase64String(file);
+                    prod.PictureMimeType = extension;
+                    prod.PictureData = bytes;
                 }
                 db.Entry(prod).State = EntityState.Modified;
                 db.SaveChanges();

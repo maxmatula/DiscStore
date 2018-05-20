@@ -11,6 +11,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Text;
 
 namespace DiscStore.WebUI.Controllers
 {
@@ -126,7 +127,7 @@ namespace DiscStore.WebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,Name,Description,Artist,Price,PremiereDate,selectedCategoryID,Categories,PictureData,PictureMimeType")] ProductViewModel product, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "ProductID,Name,Description,Artist,Price,PremiereDate,selectedCategoryID,Categories,PictureData,PictureMimeType")] ProductViewModel product, string file)
         {
             if (ModelState.IsValid)
             {
